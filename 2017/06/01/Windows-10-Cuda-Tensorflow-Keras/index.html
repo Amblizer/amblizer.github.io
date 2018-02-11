@@ -3,16 +3,25 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Arxiu: 2018/2 | Amblizer&#39;s Mainframe</title>
+    <title>Windows 10 安装 Cuda 8 + CuDNN 6, Tensorflow 和 keras，附CPU/GPU切换小技巧 | Amblizer&#39;s Mainframe</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Amblizer&#39;s Mainframe">
-<meta property="og:url" content="http://amblizer.xyz/archives/2018/02/index.html">
+        <meta name="keywords" content="python,alphabet" />
+    
+    <meta name="description" content="Install Cuda 8 + CuDNN 6, Tensorflow and Keras on Windows 10, methods to switch between CPU and GPU attached[Windows 10 安装 Cuda 8 + CuDNN 6, Tensorflow 和 keras，附CPU/GPU切换小技巧] Updated: Dec 29, 2017 Ori">
+<meta name="keywords" content="python,alphabet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows 10 安装 Cuda 8 + CuDNN 6, Tensorflow 和 keras，附CPU&#x2F;GPU切换小技巧">
+<meta property="og:url" content="http://amblizer.xyz/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/index.html">
 <meta property="og:site_name" content="Amblizer&#39;s Mainframe">
+<meta property="og:description" content="Install Cuda 8 + CuDNN 6, Tensorflow and Keras on Windows 10, methods to switch between CPU and GPU attached[Windows 10 安装 Cuda 8 + CuDNN 6, Tensorflow 和 keras，附CPU/GPU切换小技巧] Updated: Dec 29, 2017 Ori">
+<meta property="og:image" content="http://amblizer.xyz/img/2017-07/2017-07-19_01.JPG">
+<meta property="og:updated_time" content="2017-12-29T14:01:06.621Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Amblizer&#39;s Mainframe">
+<meta name="twitter:title" content="Windows 10 安装 Cuda 8 + CuDNN 6, Tensorflow 和 keras，附CPU&#x2F;GPU切换小技巧">
+<meta name="twitter:description" content="Install Cuda 8 + CuDNN 6, Tensorflow and Keras on Windows 10, methods to switch between CPU and GPU attached[Windows 10 安装 Cuda 8 + CuDNN 6, Tensorflow 和 keras，附CPU/GPU切换小技巧] Updated: Dec 29, 2017 Ori">
+<meta name="twitter:image" content="http://amblizer.xyz/img/2017-07/2017-07-19_01.JPG">
     
 
     
@@ -121,80 +130,199 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>Arxiu: 2018/2
+    Sense categoria
     </h1>
 </div>
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-Windows-10-Cuda-Tensorflow-Keras" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2018" class="archive-year"><i class="icon fa fa-calendar-o"></i>2018</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/02/09/北国の春/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://amblizer.xyz/2018/02/09/北国の春/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2018-02-08T16:00:00.000Z" itemprop="datePublished">2018-02-09</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/09/北国の春/">千 昌夫 - 北国の春</a>
+        Windows 10 安装 Cuda 8 + CuDNN 6, Tensorflow 和 keras，附CPU/GPU切换小技巧
         </h1>
     
 
-        <p class="article-excerpt">
-            北国の春 by 千 昌夫白樺（しら　かば）　青空（あおぞら）　南風（みなみかぜ）
-こぶし咲（さく）　あの丘（おか）北国（きたくに）の
-ああ　北国の春（はる）
-季節（きせつ）が　都会（とかい）で　はわからないだろと
-届（とど）いた　ふくろの　小（ちい）さな　つつみ
-あの　故郷（ふるさと）へ　帰（かえ）ろかな　帰ろかな
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/" class="article-date">
+            <time datetime="2017-05-31T16:00:00.000Z" itemprop="datePublished">2017-06-01</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/alphabet/">alphabet</a>, <a class="tag-link" href="/tags/python/">python</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="Install-Cuda-8-CuDNN-6-Tensorflow-and-Keras-on-Windows-10-methods-to-switch-between-CPU-and-GPU-attached"><a href="#Install-Cuda-8-CuDNN-6-Tensorflow-and-Keras-on-Windows-10-methods-to-switch-between-CPU-and-GPU-attached" class="headerlink" title="Install Cuda 8 + CuDNN 6, Tensorflow and Keras on Windows 10, methods to switch between CPU and GPU attached"></a>Install Cuda 8 + CuDNN 6, Tensorflow and Keras on Windows 10, methods to switch between CPU and GPU attached</h1><p>[Windows 10 安装 Cuda 8 + CuDNN 6, Tensorflow 和 keras，附CPU/GPU切换小技巧]</p>
+<p>Updated: Dec 29, 2017</p>
+<p>Originally published on <a href="https://medium.com/@zhaomingyang/painful-installation-of-cuda-tensorflow-and-keras-on-windows-10-and-finally-all-done-75f3ade4b01a" target="_blank" rel="noopener">Github.io</a>, reblogged in case of blocking</p>
+<p>I’ve tried months ago to install the GPU-based Machine learning framework, namely keras with tensorflow, but get stuck following the official indication of the latter, and the issue remained unresolved until yesterday because of loads of patients in summer vocation, and I finally managed to get m1000m working.</p>
+<p>I basically followed instructions written in Chinese in <a href="http://blog.csdn.net/u012898521/article/details/69611800" target="_blank" rel="noopener">http://blog.csdn.net/u012898521/article/details/69611800</a>, with a few modifications according to keras documentation in Chinese HERE, and actually I did a combination of both.</p>
+<h2 id="Step-1-Python-with-Anaconda"><a href="#Step-1-Python-with-Anaconda" class="headerlink" title="Step 1 - Python with Anaconda"></a>Step 1 - Python with Anaconda</h2><p><del>By far tensorflow only support python 3 but no newer than major version of 3.5, and last time I got a lot of trouble tried to install the dependencies especially scipy. I didn’t use anaconda because it starts rather slow and Google said you could install tensorflow without it, and it was later I found scipy itself WILL encounter problems when installed on windows.</del></p>
+<p>Just <a href="https://www.anaconda.com/download/?lang=en-us" target="_blank" rel="noopener">download and intall Anaconda 5.0 with python 3</a>, </p>
+<p><img src="/img/2017-07/2017-07-19_01.JPG" alt="这里写图片描述"></p>
+<p>Simply install Anaconda with python <del>3.5 (I installed Anaconda 4.2.0 with python 3.5.2)</del> 3.6, and it will save you all the troubles.</p>
+<h2 id="Step-2-—-CUDA-and-CuDNN"><a href="#Step-2-—-CUDA-and-CuDNN" class="headerlink" title="Step 2 — CUDA and CuDNN"></a>Step 2 — CUDA and CuDNN</h2><p>NVIDIA had buried download links to older version of CUDA and CuDNN, so I list the links chart first.</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Compatible with</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CUDA 9.1</td>
+<td>self-compiled Tensor Flow</td>
+<td><a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="noopener">Click to download</a></td>
+</tr>
+<tr>
+<td>CUDA 8.0.61 &amp; prior</td>
+<td>TensorFlow</td>
+<td><a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">Click to download</a></td>
+</tr>
+<tr>
+<td>CuDNN 6</td>
+<td>TensorFlow</td>
+<td><a href="http://developer2.download.nvidia.com/compute/machine-learning/cudnn/secure/v6/prod/8.0_20170427/cudnn-8.0-windows10-x64-v6.0.zip" target="_blank" rel="noopener">Click to download</a></td>
+</tr>
+<tr>
+<td>CuDNN 5 &amp; prior</td>
+<td>Theano, etc</td>
+<td><a href="https://developer.nvidia.com/rdp/cudnn-archive" target="_blank" rel="noopener">Click to download</a></td>
+</tr>
+</tbody>
+</table>
+<p>CUDA is toolkit enables you to all the fun programming with NVIDIA GPU, you’re welcomed unless your GPU is prior to GTX 500 series.</p>
+<p>You’re encouraged to download <a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">CUDA 8.0.61</a> and <a href="http://developer2.download.nvidia.com/compute/machine-learning/cudnn/secure/v6/prod/8.0_20170427/cudnn-8.0-windows10-x64-v6.0.zip" target="_blank" rel="noopener">CuDNN 6</a> in order to drive TensorFlow 1.4, and you’ll find it somewhat time consuming.</p>
+<p><img src="/img/2017-07/2017-07-19_02.JPG" alt="这里写图片描述"></p>
+<p>Installation is simple a series of ‘Next’s.</p>
+<p>And now you can install CuDNN, an acceleration library for CUDA. You’ll require to signed a developer account in order to get it HERE, and then unzip the folders and overwrite folders at</p>
+<pre><code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\8.0
+</code></pre><p>with same names.</p>
+<h2 id="Step-3-—-Ananconda-Environment-amp-Tensorflow"><a href="#Step-3-—-Ananconda-Environment-amp-Tensorflow" class="headerlink" title="Step 3 — Ananconda Environment &amp; Tensorflow"></a>Step 3 — Ananconda Environment &amp; Tensorflow</h2><p><del>Simply use pip with installation.</del></p>
+<p>Create an Ananconda environment named “tf” using:</p>
+<pre><code>&gt;conda create -n tf
+</code></pre><p>And activate the envirionmant by:</p>
+<pre><code>&gt;activate tf
+</code></pre><p>Then the command shows:</p>
+<pre><code>(tf) C:\Users\username&gt;_
+</code></pre><p>which indicates that you have entered the newly create environment. By using the environment, we can capsule our manuvours within the very space, without influencing that global configuration of the whole system. This is especally useful when you’re testing different versions of same software packages, say, using python 3.5 &amp; 3.6 samultanously.</p>
+<p>To install CPU version(required):</p>
+<pre><code>(tf) C:\Users\username&gt;conda install tensorflow
+</code></pre><p>Test the CPU version tensorflow:</p>
+<pre><code>(tf) C:\Users\username&gt;python
+&gt;&gt;&gt;import tensorflow as tf
+</code></pre><p>To install GPU version(optional)</p>
+<pre><code>(tf) C:\Users\username&gt;conda install tensorflow-gpu
+</code></pre><p>Restart first and then test the GPU version tensorflow:</p>
+<pre><code>(tf) C:\Users\username&gt;python
+&gt;&gt;&gt;import tensorflow as tf
+</code></pre><h2 id="Step-4-—-Keras"><a href="#Step-4-—-Keras" class="headerlink" title="Step 4 — Keras"></a>Step 4 — Keras</h2><p>A line of code will do</p>
+<pre><code>(tf) C:\Users\username&gt;conda install keras
+</code></pre><p>Keras will be installed with theano by default, but it will use tensorflow as the back-end, so don’t panic, and test if keras is installed correctly by</p>
+<pre><code>(tf) C:\Users\username&gt;python
+&gt;&gt;&gt;import keras
+</code></pre><p>Now we could run the MNIST example in Keras with either CPU or GPU</p>
+<h2 id="Step-5-—-Run-and-switch-between-CPU-and-GPU"><a href="#Step-5-—-Run-and-switch-between-CPU-and-GPU" class="headerlink" title="Step 5 — Run and switch between CPU and GPU"></a>Step 5 — Run and switch between CPU and GPU</h2><p>Download keras testing data sets <a href="https://github.com/fchollet/keras.git" target="_blank" rel="noopener">HERE</a>, or if you have git run</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/fchollet/keras.git</span><br></pre></td></tr></table></figure>
+<p>Locate at <code>keras/examples/</code>, and run <code>mnist_mlp.py</code>, if you installed CUDA and CuDNN correctly, it will run on GPU by default, and here’s my running on GPU:</p>
+<p><img src="/img/2017-07/2017-07-19_03.jpg" alt="这里写图片描述"></p>
+<p>Sadly I only have a M1000M on the laptop, of which the performance is compromised. </p>
+
+        </div>
+        <footer class="article-footer">
+            
 
 
-        </p>
+
+    <a data-url="http://amblizer.xyz/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/" data-id="cjdih932t0005t8uajdquj80e" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
 </article>
+
+    <section id="comments">
     
-        </div>
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
     
-
-
-    </div></section>
-
+    </section>
 
 
                         </div>
@@ -255,6 +383,29 @@
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/06/10/Saving loop 保存与循环/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">més nou</strong>
+        <p class="article-nav-title">
+        
+            Saving loop 保存与循环
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/02/15/alphabet in a line/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">antic</strong>
+        <p class="article-nav-title">alphabet in a line</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -445,11 +596,13 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
+    var disqus_url = 'http://amblizer.xyz/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>

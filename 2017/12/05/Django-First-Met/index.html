@@ -3,16 +3,23 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Arxiu: 2018/2 | Amblizer&#39;s Mainframe</title>
+    <title>Django First Met | Amblizer&#39;s Mainframe</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Amblizer&#39;s Mainframe">
-<meta property="og:url" content="http://amblizer.xyz/archives/2018/02/index.html">
+        <meta name="keywords" content="python,django" />
+    
+    <meta name="description" content="Django First MetAs demanded by my instructor, I need to grab the essence of Django in three weeks, which is not quite possible for a non-native CS candidate. Still, I struggled to follow the instructi">
+<meta name="keywords" content="python,django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django First Met">
+<meta property="og:url" content="http://amblizer.xyz/2017/12/05/Django-First-Met/index.html">
 <meta property="og:site_name" content="Amblizer&#39;s Mainframe">
+<meta property="og:description" content="Django First MetAs demanded by my instructor, I need to grab the essence of Django in three weeks, which is not quite possible for a non-native CS candidate. Still, I struggled to follow the instructi">
+<meta property="og:updated_time" content="2017-12-04T16:29:03.264Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Amblizer&#39;s Mainframe">
+<meta name="twitter:title" content="Django First Met">
+<meta name="twitter:description" content="Django First MetAs demanded by my instructor, I need to grab the essence of Django in three weeks, which is not quite possible for a non-native CS candidate. Still, I struggled to follow the instructi">
     
 
     
@@ -121,80 +128,137 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>Arxiu: 2018/2
+    Sense categoria
     </h1>
 </div>
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-Django-First-Met" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2018" class="archive-year"><i class="icon fa fa-calendar-o"></i>2018</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/02/09/北国の春/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://amblizer.xyz/2018/02/09/北国の春/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            
-            </div>
-            <div class="date"><time datetime="2018-02-08T16:00:00.000Z" itemprop="datePublished">2018-02-09</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/02/09/北国の春/">千 昌夫 - 北国の春</a>
+        Django First Met
         </h1>
     
 
-        <p class="article-excerpt">
-            北国の春 by 千 昌夫白樺（しら　かば）　青空（あおぞら）　南風（みなみかぜ）
-こぶし咲（さく）　あの丘（おか）北国（きたくに）の
-ああ　北国の春（はる）
-季節（きせつ）が　都会（とかい）で　はわからないだろと
-届（とど）いた　ふくろの　小（ちい）さな　つつみ
-あの　故郷（ふるさと）へ　帰（かえ）ろかな　帰ろかな
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/12/05/Django-First-Met/" class="article-date">
+            <time datetime="2017-12-04T16:00:00.000Z" itemprop="datePublished">2017-12-05</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/django/">django</a>, <a class="tag-link" href="/tags/python/">python</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="Django-First-Met"><a href="#Django-First-Met" class="headerlink" title="Django First Met"></a>Django First Met</h1><p>As demanded by my instructor, I need to grab the essence of Django in three weeks, which is not quite possible for a non-native CS candidate. Still, I struggled to follow the instructions given in the official document, and, well, not THAT official, that I’m actually doing a step by step tutorial in mandarin, which lags in the version of 1.10.5 instead of the newly announced 2.0. But this doesn’t trouble me at all since Anaconda also doesn’t provide the latest 2.0 update in the repertoire.</p>
+<p>So I just began.</p>
+<h2 id="Implementing-Virtual-environment"><a href="#Implementing-Virtual-environment" class="headerlink" title="Implementing Virtual environment"></a>Implementing Virtual environment</h2><p>I heard that functions in Django differ across various versions, and to save the trouble I implemented in virtual envs in Anaconda.</p>
+<p>Simply create a new env use:</p>
+<pre><code>&gt;conda create -n Django1
+</code></pre><p>Activate it:</p>
+<pre><code>&gt;activate Django1
+</code></pre><p>And install the proper version of Django:</p>
+<pre><code>(django1) &gt;conda install Django=1.10.5
+</code></pre><h3 id="Create-Django-Project"><a href="#Create-Django-Project" class="headerlink" title="Create Django Project"></a>Create Django Project</h3><p>In workspace directory, use:</p>
+<pre><code>(django1) &gt;django-admin startproject blogproject
+</code></pre><p>Be sure to stay in the virtual env.</p>
+<h3 id="Test-the-server"><a href="#Test-the-server" class="headerlink" title="Test the server"></a>Test the server</h3><p>To start the local server iIn blogproject directory use:</p>
+<pre><code>(django1) &gt;python manage.py runserver
+</code></pre><p>Then visit localhost:8000 in a browser.</p>
+
+        </div>
+        <footer class="article-footer">
+            
 
 
-        </p>
+
+    <a data-url="http://amblizer.xyz/2017/12/05/Django-First-Met/" data-id="cjdih9333000ct8uaf3uyi0d7" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
 </article>
+
+    <section id="comments">
     
-        </div>
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
     
-
-
-    </div></section>
-
+    </section>
 
 
                         </div>
@@ -255,6 +319,29 @@
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/12/31/偿い/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">més nou</strong>
+        <p class="article-nav-title">
+        
+            テレサ．テン - 偿い
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/11/02/Bamboo-Song - Copy/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">antic</strong>
+        <p class="article-nav-title">中岛みゆき - 竹の歌</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -445,11 +532,13 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
+    var disqus_url = 'http://amblizer.xyz/2017/12/05/Django-First-Met/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
