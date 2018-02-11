@@ -16,12 +16,12 @@
 <meta property="og:url" content="http://amblizer.xyz/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/index.html">
 <meta property="og:site_name" content="Amblizer&#39;s Mainframe">
 <meta property="og:description" content="Install Cuda 8 + CuDNN 6, Tensorflow and Keras on Windows 10, methods to switch between CPU and GPU attached[Windows 10 安装 Cuda 8 + CuDNN 6, Tensorflow 和 keras，附CPU/GPU切换小技巧] Updated: Dec 29, 2017 Ori">
-<meta property="og:image" content="http://amblizer.xyz/img/2017-07/2017-07-19_01.JPG">
-<meta property="og:updated_time" content="2017-12-29T14:01:06.621Z">
+<meta property="og:image" content="http://amblizer.xyz/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/2017-07-19_logo.jpg">
+<meta property="og:updated_time" content="2018-02-11T08:33:35.552Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows 10 安装 Cuda 8 + CuDNN 6, Tensorflow 和 keras，附CPU&#x2F;GPU切换小技巧">
 <meta name="twitter:description" content="Install Cuda 8 + CuDNN 6, Tensorflow and Keras on Windows 10, methods to switch between CPU and GPU attached[Windows 10 安装 Cuda 8 + CuDNN 6, Tensorflow 和 keras，附CPU/GPU切换小技巧] Updated: Dec 29, 2017 Ori">
-<meta name="twitter:image" content="http://amblizer.xyz/img/2017-07/2017-07-19_01.JPG">
+<meta name="twitter:image" content="http://amblizer.xyz/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/2017-07-19_logo.jpg">
     
 
     
@@ -68,13 +68,13 @@
                         <ul id="main-nav">
                             
                                 <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">Home</a>
+                                    <a class="main-nav-list-link" href="/">Inici</a>
                                 </li>
                             
                                         
                                     
                                 <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                    <a class="main-nav-list-link" href="/about/index.html">Quant a</a>
                                 </li>
                             
                         </ul>
@@ -82,7 +82,7 @@
                             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Cercar" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -103,8 +103,8 @@
         TRANSLATION: {
             POSTS: 'Posts',
             PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            CATEGORIES: 'categories',
+            TAGS: 'etiquetes',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -130,7 +130,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    uncategorized
+    Sense categoria
     </h1>
 </div>
                         <div class="main-body-content">
@@ -171,9 +171,10 @@
 <p>Originally published on <a href="https://medium.com/@zhaomingyang/painful-installation-of-cuda-tensorflow-and-keras-on-windows-10-and-finally-all-done-75f3ade4b01a" target="_blank" rel="noopener">Github.io</a>, reblogged in case of blocking</p>
 <p>I’ve tried months ago to install the GPU-based Machine learning framework, namely keras with tensorflow, but get stuck following the official indication of the latter, and the issue remained unresolved until yesterday because of loads of patients in summer vocation, and I finally managed to get m1000m working.</p>
 <p>I basically followed instructions written in Chinese in <a href="http://blog.csdn.net/u012898521/article/details/69611800" target="_blank" rel="noopener">http://blog.csdn.net/u012898521/article/details/69611800</a>, with a few modifications according to keras documentation in Chinese HERE, and actually I did a combination of both.</p>
+<img src="/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/2017-07-19_logo.jpg" title="Tensorflow logo">
 <h2 id="Step-1-Python-with-Anaconda"><a href="#Step-1-Python-with-Anaconda" class="headerlink" title="Step 1 - Python with Anaconda"></a>Step 1 - Python with Anaconda</h2><p><del>By far tensorflow only support python 3 but no newer than major version of 3.5, and last time I got a lot of trouble tried to install the dependencies especially scipy. I didn’t use anaconda because it starts rather slow and Google said you could install tensorflow without it, and it was later I found scipy itself WILL encounter problems when installed on windows.</del></p>
 <p>Just <a href="https://www.anaconda.com/download/?lang=en-us" target="_blank" rel="noopener">download and intall Anaconda 5.0 with python 3</a>, </p>
-<p><img src="/img/2017-07/2017-07-19_01.JPG" alt="这里写图片描述"></p>
+<img src="/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/2017-07-19_01.jpg" title="Anaconda">
 <p>Simply install Anaconda with python <del>3.5 (I installed Anaconda 4.2.0 with python 3.5.2)</del> 3.6, and it will save you all the troubles.</p>
 <h2 id="Step-2-—-CUDA-and-CuDNN"><a href="#Step-2-—-CUDA-and-CuDNN" class="headerlink" title="Step 2 — CUDA and CuDNN"></a>Step 2 — CUDA and CuDNN</h2><p>NVIDIA had buried download links to older version of CUDA and CuDNN, so I list the links chart first.</p>
 <table>
@@ -209,7 +210,7 @@
 </table>
 <p>CUDA is toolkit enables you to all the fun programming with NVIDIA GPU, you’re welcomed unless your GPU is prior to GTX 500 series.</p>
 <p>You’re encouraged to download <a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">CUDA 8.0.61</a> and <a href="http://developer2.download.nvidia.com/compute/machine-learning/cudnn/secure/v6/prod/8.0_20170427/cudnn-8.0-windows10-x64-v6.0.zip" target="_blank" rel="noopener">CuDNN 6</a> in order to drive TensorFlow 1.4, and you’ll find it somewhat time consuming.</p>
-<p><img src="/img/2017-07/2017-07-19_02.JPG" alt="这里写图片描述"></p>
+<img src="/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/2017-07-19_02.jpg" title="CUDA Toolkit">
 <p>Installation is simple a series of ‘Next’s.</p>
 <p>And now you can install CuDNN, an acceleration library for CUDA. You’ll require to signed a developer account in order to get it HERE, and then unzip the folders and overwrite folders at</p>
 <pre><code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\8.0
@@ -241,7 +242,7 @@
 <h2 id="Step-5-—-Run-and-switch-between-CPU-and-GPU"><a href="#Step-5-—-Run-and-switch-between-CPU-and-GPU" class="headerlink" title="Step 5 — Run and switch between CPU and GPU"></a>Step 5 — Run and switch between CPU and GPU</h2><p>Download keras testing data sets <a href="https://github.com/fchollet/keras.git" target="_blank" rel="noopener">HERE</a>, or if you have git run</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/fchollet/keras.git</span><br></pre></td></tr></table></figure>
 <p>Locate at <code>keras/examples/</code>, and run <code>mnist_mlp.py</code>, if you installed CUDA and CuDNN correctly, it will run on GPU by default, and here’s my running on GPU:</p>
-<p><img src="/img/2017-07/2017-07-19_03.jpg" alt="这里写图片描述"></p>
+<img src="/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/2017-07-19_03.jpg" title="MNIST Test">
 <p>Sadly I only have a M1000M on the laptop, of which the performance is compromised. </p>
 
         </div>
@@ -250,7 +251,7 @@
 
 
 
-    <a data-url="http://amblizer.xyz/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/" data-id="cjdiijgh60009rguac9mqlnvp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://amblizer.xyz/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/" data-id="cjdij9e1m000c28uaffn86yjw" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -330,7 +331,7 @@
                     <aside id="sidebar">
     <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
     <div class="sidebar-top">
-        <p>follow:</p>
+        <p>seguir:</p>
         <ul class="social-links">
             
                 
@@ -388,7 +389,7 @@
 <nav id="article-nav">
     
         <a href="/2017/06/10/Saving loop 保存与循环/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
+        <strong class="article-nav-caption">més nou</strong>
         <p class="article-nav-title">
         
             Saving loop 保存与循环
@@ -399,7 +400,7 @@
     
     
         <a href="/2017/02/15/alphabet in a line/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">older</strong>
+        <strong class="article-nav-caption">antic</strong>
         <p class="article-nav-title">alphabet in a line</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
@@ -422,7 +423,7 @@
                             <a href="/2018/02/11/SCU-Memo/" class="thumbnail">
     
     
-        <span style="background-image:url(/2018/02/11/SCU-Memo/Mission.png)" alt="SCU CSE 录取之后步骤[draft]" class="thumbnail-image"></span>
+        <span style="background-image:url(/2018/02/11/SCU-Memo/CB15_BroncoStatue_3632_006.jpg)" alt="SCU CSE 录取之后步骤[draft]" class="thumbnail-image"></span>
     
     
 </a>
@@ -526,7 +527,7 @@
             
                 
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">archives</h3>
+        <h3 class="widget-title">arxius</h3>
         <div class="widget">
             <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a><span class="archive-list-count">2</span></li></ul>
         </div>
@@ -536,7 +537,7 @@
             
                 
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">tags</h3>
+        <h3 class="widget-title">etiquetes</h3>
         <div class="widget">
             <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fisher–Yates-shuffle/">Fisher–Yates shuffle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Japanese/">Japanese</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SCU/">SCU</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Santa-Clara-University/">Santa Clara University</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/alphabet/">alphabet</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/save/">save</a><span class="tag-list-count">1</span></li></ul>
         </div>
@@ -546,7 +547,7 @@
             
                 
     <div class="widget-wrap widget-float">
-        <h3 class="widget-title">tag cloud</h3>
+        <h3 class="widget-title">etiqueta cloud</h3>
         <div class="widget tagcloud">
             <a href="/tags/Fisher–Yates-shuffle/" style="font-size: 10px;">Fisher–Yates shuffle</a> <a href="/tags/Japanese/" style="font-size: 16.67px;">Japanese</a> <a href="/tags/SCU/" style="font-size: 10px;">SCU</a> <a href="/tags/Santa-Clara-University/" style="font-size: 10px;">Santa Clara University</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/alphabet/" style="font-size: 13.33px;">alphabet</a> <a href="/tags/django/" style="font-size: 10px;">django</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/save/" style="font-size: 10px;">save</a>
         </div>
