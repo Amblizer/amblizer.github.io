@@ -230,9 +230,9 @@
       <category term="Deep Learning" scheme="http://amblizer.xyz/categories/Computer/Deep-Learning/"/>
     
     
-      <category term="alphabet" scheme="http://amblizer.xyz/tags/alphabet/"/>
-    
       <category term="python" scheme="http://amblizer.xyz/tags/python/"/>
+    
+      <category term="alphabet" scheme="http://amblizer.xyz/tags/alphabet/"/>
     
   </entry>
   
@@ -259,9 +259,9 @@
       <category term="Programming" scheme="http://amblizer.xyz/categories/Computer/Programming/"/>
     
     
-      <category term="alphabet" scheme="http://amblizer.xyz/tags/alphabet/"/>
-    
       <category term="python" scheme="http://amblizer.xyz/tags/python/"/>
+    
+      <category term="alphabet" scheme="http://amblizer.xyz/tags/alphabet/"/>
     
   </entry>
   
@@ -289,11 +289,11 @@
       <category term="Programming" scheme="http://amblizer.xyz/categories/Computer/Programming/"/>
     
     
-      <category term="python" scheme="http://amblizer.xyz/tags/python/"/>
-    
       <category term="Fisher–Yates shuffle" scheme="http://amblizer.xyz/tags/Fisher%E2%80%93Yates-shuffle/"/>
     
       <category term="algorithm" scheme="http://amblizer.xyz/tags/algorithm/"/>
+    
+      <category term="python" scheme="http://amblizer.xyz/tags/python/"/>
     
   </entry>
   
