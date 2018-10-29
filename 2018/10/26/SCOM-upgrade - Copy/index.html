@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Win 10 廉价指纹方案：EgisTec ES603 | Amblizer&#39;s Mainframe</title>
+  <title>Upgrade SCOM from 2012 r2 UR14 to 2016 | Amblizer&#39;s Mainframe</title>
   <meta name="HandheldFriendly" content="True">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="shortcut icon" href="https://xaoxuu.com/assets/img/favicon.ico">
@@ -111,21 +111,21 @@
     <div class="l_body">
     <div class='container clearfix'>
         <div class='l_main'>
-            <article id="post-Win10-Fingerprint" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
+            <article id="post-SCOM-upgrade - Copy" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
     <section class="meta">
         <h1 class="title">
             
-                Win 10 廉价指纹方案：EgisTec ES603
+                Upgrade SCOM from 2012 r2 UR14 to 2016
             
         </h1>
         <time>
-            <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;2016-03-16&nbsp;&nbsp;
+            <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;2018-10-26&nbsp;&nbsp;
             <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
     
     <div class="cats">
-        <a href="/categories/Computer/">Computer</a>, <a href="/categories/Computer/Hardware/">Hardware</a>
+        <a href="/categories/CS/">CS</a>, <a href="/categories/CS/IT/">IT</a>
     </div>
 
 
@@ -134,23 +134,66 @@
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
-            <script src="\assets\js\APlayer.min.js"> </script><p>​​最近突然有给电脑配指纹验证的想法，经过一番折腾，最后百元之内完美启用Wind 10 hello的指纹登陆。</p>
-<img src="/2016/03/16/Win10-Fingerprint/logo.jpg" title="logo">
-<p>硬件：EgisTec ES603，淘宝搜索即可，70元左右</p>
-<p>驱动：这一步是关键，随机附带的驱动为非WBF（Windows Biometric Framework）版本，只能通过第三方软件配合使用。一番搜索后发现此模块和TravelMate P446-M的指纹模块驱动一致，恰巧Acer在官网发布了其支持Win 10 x64的WBF版本驱动，下载安装后重启即可。进入登陆选项，设置Pin之后即可使用，如下图：</p>
-<img src="/2016/03/16/Win10-Fingerprint/1.jpg">
-<p><br><br><img src="/2016/03/16/Win10-Fingerprint/2.jpg"><br><br><br><img src="/2016/03/16/Win10-Fingerprint/3.jpg"></p>
-<p><a href="http://global-download.acer.com/GDFiles/Driver/Fingerprint/Fingerprint_STMicro_3.5.1.0_W10x64_A.zip?acerid=635878162345569420&amp;Step1=NOTEBOOK&amp;Step2=TRAVELMATE&amp;Step3=TRAVELMATE%20P446-M&amp;OS=10M1&amp;LC=en&amp;BC=ACER&amp;SC=PA_6" target="_blank" rel="noopener">点击下载驱动</a></p>
-<p>嗯，的确是物美价廉。​​​​</p>
+            <script src="\assets\js\APlayer.min.js"> </script><h1 id="Upgrade-SCOM-from-2012-r2-UR14-to-2016"><a href="#Upgrade-SCOM-from-2012-r2-UR14-to-2016" class="headerlink" title="Upgrade SCOM from 2012 r2 UR14 to 2016"></a>Upgrade SCOM from 2012 r2 UR14 to 2016</h1><h2 id="Pre-Upgrade"><a href="#Pre-Upgrade" class="headerlink" title="Pre-Upgrade"></a>Pre-Upgrade</h2><ol>
+<li><p>Review the Operations Manager event logs, save a copy.</p>
+</li>
+<li><p>Cleanup the ETL table, use scripts below on OM db.</p>
+</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- (c) Copyright 2004-2006 Microsoft Corporation, All Rights Reserved         --</span></span><br><span class="line"><span class="comment">-- Proprietary and confidential to Microsoft Corporation                      --       </span></span><br><span class="line"><span class="comment">-- File:      CatchupETLGrooming.sql                                          --</span></span><br><span class="line"><span class="comment">-- Contents: A bug in the ETL grooming code could have left the customer      --</span></span><br><span class="line"><span class="comment">-- Database with a large amount of ETL rows to groom. This script will groom   --</span></span><br><span class="line"><span class="comment">-- The ETL entries in a loop 100K rows at a time to avoid filling up the        --</span></span><br><span class="line"><span class="comment">-- Transaction log                                                             --</span></span><br><span class="line"><span class="comment">---------------------------------------------------------------------------------</span></span><br><span class="line"><span class="keyword">DECLARE</span> @RowCount <span class="built_in">int</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">DECLARE</span> @BatchSize <span class="built_in">int</span> = <span class="number">100000</span>;</span><br><span class="line"><span class="keyword">DECLARE</span> @SubscriptionWatermark <span class="built_in">bigint</span> = <span class="number">0</span>;     </span><br><span class="line"><span class="keyword">DECLARE</span> @LastErr <span class="built_in">int</span>;</span><br><span class="line"><span class="comment">-- Delete rows from the EntityTransactionLog. We delete the rows with TransactionLogId that aren't being</span></span><br><span class="line"><span class="comment">-- used anymore by the EntityChangeLog table and by the RelatedEntityChangeLog table.</span></span><br><span class="line"><span class="keyword">SELECT</span> @SubscriptionWatermark = dbo.fn_GetEntityChangeLogGroomingWatermark();</span><br><span class="line">WHILE(@RowCount &gt; 0)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">DELETE</span> TOP(@BatchSize) ETL  </span><br><span class="line">  <span class="keyword">FROM</span> EntityTransactionLog ETL</span><br><span class="line">  <span class="keyword">WHERE</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> <span class="number">1</span> <span class="keyword">FROM</span> EntityChangeLog ECL <span class="keyword">WHERE</span> ECL.EntityTransactionLogId = ETL.EntityTransactionLogId) <span class="keyword">AND</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> <span class="number">1</span> <span class="keyword">FROM</span> RelatedEntityChangeLog RECL</span><br><span class="line">  <span class="keyword">WHERE</span> RECL.EntityTransactionLogId = ETL.EntityTransactionLogId)</span><br><span class="line">  <span class="keyword">AND</span> ETL.EntityTransactionLogId &lt; @SubscriptionWatermark;        </span><br><span class="line">  <span class="keyword">SELECT</span> @LastErr = @@<span class="keyword">ERROR</span>, @RowCount = @@ROWCOUNT;            </span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>Remove Agents from pending management</p>
+<ul>
+<li>In the Administration pane, expand Device Management, and then click Pending Management.</li>
+<li>Right-click each agent, and then click Approve or Reject.</li>
+</ul>
+</li>
+<li><p>Disable notification subscriptions</p>
+<ul>
+<li>Also in Administration view, expand Administration, expand the Notifications container, and then click Subscriptions.</li>
+<li>Select each subscription, and then click Disable in the Actions pane. (Do not try to multi select)</li>
+</ul>
+</li>
+<li><p>Verify the OM database has more than 50 percent free</p>
+<ul>
+<li>Open SSMS, expand Databases and right-click the OperationsManager database, select to Reports, Standard Reports, and then click Disk Usage.</li>
+<li>View the Disk Usage report. If the database does not have 50 percent free, right-click the OperationsManager database, and then click Properties. </li>
+<li>Under Select a page, click Files. In the results pane, increase the Initial Size value for the MOM_DATA database by 50 percent.</li>
+</ul>
+</li>
+<li><p>Backup the OM databases (If not backup regularly)</p>
+</li>
+<li><p>Stop Operations Manager services</p>
+</li>
+<li><p>Increase agent HealthService cache size</p>
+<ul>
+<li>Update the following registry setting on the agents: <code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlsSet\Services\HealthService\Parameters\Management Groups&lt;ManagementGroupName&gt;\maximumQueueSizeKb</code></li>
+<li>Default is 15360 (15 MB), change it to is 76800 (75 MB).</li>
+<li>Reset it back after upgrading.</li>
+</ul>
+</li>
+</ol>
+<h2 id="Upgrade"><a href="#Upgrade" class="headerlink" title="Upgrade"></a>Upgrade</h2><h2 id="Post-Upgrade"><a href="#Post-Upgrade" class="headerlink" title="Post-Upgrade"></a>Post-Upgrade</h2><ol>
+<li><p>Re-enable the Notification Subscriptions</p>
+</li>
+<li><p>Reset agent HealthService Cache size</p>
+</li>
+<li><p>Verify the upgrade was successful</p>
+</li>
+</ol>
+<h2 id="Next-Step"><a href="#Next-Step" class="headerlink" title="Next Step"></a>Next Step</h2><ol>
+<li>See how to push agents</li>
+<li>Get familiar to other management packs</li>
+</ol>
+<p>(Ref: <a href="https://docs.microsoft.com/en-us/system-center/scom/deploy-upgrade-overview?view=sc-om-2016" target="_blank" rel="noopener">M$ SCOM Documents</a>)</p>
+<!-- link -->
 
         </div>
 
         
             <div class="article-tags tags">
                 
-                    <a href="/tags/Fingerprint/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;Fingerprint</a>
-                
-                    <a href="/tags/Windows-10/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;Windows 10</a>
+                    <a href="/tags/server/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;server</a>
                 
             </div>
         
@@ -162,18 +205,35 @@
                         <span class="art-item-left">
                             <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
                             <h4>
-                                <a href="/2017/02/01/Fisher–Yates shuffle/" rel="prev" title="Fisher–Yates shuffle">
+                                <a href="/2018/10/26/SCOM-push-agent/" rel="prev" title="Upgrade SCOM from 2012 r2 UR14 to 2016">
                                   
-                                      Fisher–Yates shuffle
+                                      Upgrade SCOM from 2012 r2 UR14 to 2016
                                   
                                 </a>
                             </h4>
                             
                                 <h6 class="tags">
                                     
-                                        <i class="fa fa-tag fa-fw"></i>Fisher–Yates shuffle
+                                        <i class="fa fa-tag fa-fw"></i>server
                                     
-                                        <i class="fa fa-tag fa-fw"></i>algorithm
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2018/03/02/CS61A - Copy/" rel="prev" title="CS61A 2018 Pathway">
+                                    
+                                        CS61A 2018 Pathway
+                                    
+                                </a>
+                            </h4>
+                            
+                                <h6 class="tags">
                                     
                                         <i class="fa fa-tag fa-fw"></i>python
                                     
@@ -181,7 +241,6 @@
                             
                         </span>
                     </section>
-                
                 
             </div>
         
@@ -221,7 +280,7 @@
 
 <script>
     window.subData = {
-        title: 'Win 10 廉价指纹方案：EgisTec ES603',
+        title: 'Upgrade SCOM from 2012 r2 UR14 to 2016',
         tools: true
     }
 </script>
@@ -337,6 +396,14 @@
     
     
         
+    <section class="m_widget toc-wrapper">
+        <!-- <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div> -->
+        <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Table of Contents</div>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Upgrade-SCOM-from-2012-r2-UR14-to-2016"><span class="toc-text">Upgrade SCOM from 2012 r2 UR14 to 2016</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Pre-Upgrade"><span class="toc-text">Pre-Upgrade</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Upgrade"><span class="toc-text">Upgrade</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Post-Upgrade"><span class="toc-text">Post-Upgrade</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Next-Step"><span class="toc-text">Next Step</span></a></li></ol></li></ol>
+        </div>
+    </section>
+
 
     
 
@@ -401,7 +468,7 @@
         <script>
             var disqus_shortname = 'amblizer';
             
-                var disqus_url = 'http://amblizer.xyz/2016/03/16/Win10-Fingerprint/';
+                var disqus_url = 'http://amblizer.xyz/2018/10/26/SCOM-upgrade - Copy/';
             
             (function(){
                 var dsq = document.createElement('script');
