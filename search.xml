@@ -3,7 +3,7 @@
   
     
     <entry>
-      <title>Upgrade SCOM from 2012 r2 UR14 to 2016</title>
+      <title>SCOM - Push Agent</title>
       <link href="/2018/10/28/SCOM-push-agent/"/>
       <url>/2018/10/28/SCOM-push-agent/</url>
       
@@ -19,7 +19,11 @@
       
         <tags>
             
-            <tag> server </tag>
+            <tag> System Center </tag>
+            
+            <tag> Operations Manager </tag>
+            
+            <tag> SCOM </tag>
             
         </tags>
       
@@ -42,7 +46,11 @@
       
         <tags>
             
-            <tag> server </tag>
+            <tag> System Center </tag>
+            
+            <tag> Operations Manager </tag>
+            
+            <tag> SCOM </tag>
             
         </tags>
       
