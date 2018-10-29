@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://amblizer.xyz/"/>
-  <updated>2018-10-29T02:27:32.625Z</updated>
+  <updated>2018-10-26T18:27:27.911Z</updated>
   <id>http://amblizer.xyz/</id>
   
   <author>
@@ -15,33 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Upgrade SCOM from 2012 r2 UR14 to 2016</title>
-    <link href="http://amblizer.xyz/2018/10/26/SCOM-push-agent/"/>
-    <id>http://amblizer.xyz/2018/10/26/SCOM-push-agent/</id>
-    <published>2018-10-26T16:00:00.000Z</published>
-    <updated>2018-10-29T02:27:32.625Z</updated>
-    
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h1 id="SCOM-push-agent"><a href="#SCOM-push-agent" class="headerlink" title="SCOM push agent"></a>SCOM push agent</h1><p><a href="https://docs.microsoft.com/en-us/system-center/scom/manage-deploy-windows-agent-console?view=sc-om-1807" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/system-center/scom/manage-deploy-windows-agent-console?view=sc-om-1807</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;script src=&quot;\assets\js\APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h1 id=&quot;SCOM-push-agent&quot;&gt;&lt;a href=&quot;#SCOM-push-agent&quot; class=&quot;headerlink&quot; title=&quot;SCOM push ag
-      
-    
-    </summary>
-    
-      <category term="CS" scheme="http://amblizer.xyz/categories/CS/"/>
-    
-      <category term="IT" scheme="http://amblizer.xyz/categories/CS/IT/"/>
-    
-    
-      <category term="server" scheme="http://amblizer.xyz/tags/server/"/>
-    
-  </entry>
   
   <entry>
     <title>Upgrade SCOM from 2012 r2 UR14 to 2016</title>
@@ -57,6 +30,33 @@
       
       
         &lt;script src=&quot;\assets\js\APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h1 id=&quot;Upgrade-SCOM-from-2012-r2-UR14-to-2016&quot;&gt;&lt;a href=&quot;#Upgrade-SCOM-from-2012-r2-UR14-t
+      
+    
+    </summary>
+    
+      <category term="CS" scheme="http://amblizer.xyz/categories/CS/"/>
+    
+      <category term="IT" scheme="http://amblizer.xyz/categories/CS/IT/"/>
+    
+    
+      <category term="server" scheme="http://amblizer.xyz/tags/server/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Upgrade SCOM from 2012 r2 UR14 to 2016</title>
+    <link href="http://amblizer.xyz/2018/10/26/SCOM-push-agent/"/>
+    <id>http://amblizer.xyz/2018/10/26/SCOM-push-agent/</id>
+    <published>2018-10-26T16:00:00.000Z</published>
+    <updated>2018-10-29T02:27:32.625Z</updated>
+    
+    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h1 id="SCOM-push-agent"><a href="#SCOM-push-agent" class="headerlink" title="SCOM push agent"></a>SCOM push agent</h1><p><a href="https://docs.microsoft.com/en-us/system-center/scom/manage-deploy-windows-agent-console?view=sc-om-1807" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/system-center/scom/manage-deploy-windows-agent-console?view=sc-om-1807</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;script src=&quot;\assets\js\APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h1 id=&quot;SCOM-push-agent&quot;&gt;&lt;a href=&quot;#SCOM-push-agent&quot; class=&quot;headerlink&quot; title=&quot;SCOM push ag
       
     
     </summary>
