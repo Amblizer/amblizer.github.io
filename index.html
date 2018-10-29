@@ -140,26 +140,26 @@
             <article class="post reveal ">
     <section class="meta">
         <h2 class="title">
-            <a href="/2018/10/26/SCOM-push-agent/">
+            <a href="/2018/10/28/SCOM-push-agent/">
                 
                     Upgrade SCOM from 2012 r2 UR14 to 2016
                 
             </a>
         </h2>
         <time>
-            <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;2018-10-26
+            <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;2018-10-28
         </time>
         
     
     <div class="cats">
-        <a href="/categories/CS/">CS</a>, <a href="/categories/CS/IT/">IT</a>
+        <a href="/categories/Server/">Server</a>
     </div>
 
 
     </section>
 
     <section class="article typo">
-        <script src="\assets\js\APlayer.min.js"> </script><h1 id="SCOM-push-agent"><a href="#SCOM-push-agent" class="headerlink" title="SCOM push agent"></a>SCOM push agent</h1><p><a href="https://docs.microsoft.com/en-us/system-center/scom/manage-deploy-windows-agent-console?view=sc-om-1807" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/system-center/scom/manage-deploy-windows-agent-console?view=sc-om-1807</a></p>
+        <script src="\assets\js\APlayer.min.js"> </script><p><a href="https://docs.microsoft.com/en-us/system-center/scom/manage-deploy-windows-agent-console?view=sc-om-1807" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/system-center/scom/manage-deploy-windows-agent-console?view=sc-om-1807</a></p>
 
         
 
@@ -179,7 +179,7 @@
             <article class="post reveal ">
     <section class="meta">
         <h2 class="title">
-            <a href="/2018/10/26/SCOM-upgrade - Copy/">
+            <a href="/2018/10/26/SCOM-upgrade/">
                 
                     Upgrade SCOM from 2012 r2 UR14 to 2016
                 
@@ -191,67 +191,23 @@
         
     
     <div class="cats">
-        <a href="/categories/CS/">CS</a>, <a href="/categories/CS/IT/">IT</a>
+        <a href="/categories/Server/">Server</a>
     </div>
 
 
     </section>
 
     <section class="article typo">
-        <script src="\assets\js\APlayer.min.js"> </script><h1 id="Upgrade-SCOM-from-2012-r2-UR14-to-2016"><a href="#Upgrade-SCOM-from-2012-r2-UR14-to-2016" class="headerlink" title="Upgrade SCOM from 2012 r2 UR14 to 2016"></a>Upgrade SCOM from 2012 r2 UR14 to 2016</h1><h2 id="Pre-Upgrade"><a href="#Pre-Upgrade" class="headerlink" title="Pre-Upgrade"></a>Pre-Upgrade</h2><ol>
+        <h2 id="Pre-Upgrade"><a href="#Pre-Upgrade" class="headerlink" title="Pre-Upgrade"></a>Pre-Upgrade</h2><ol>
 <li><p>Review the Operations Manager event logs, save a copy.</p>
 </li>
 <li><p>Cleanup the ETL table, use scripts below on OM db.</p>
 </li>
 </ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- (c) Copyright 2004-2006 Microsoft Corporation, All Rights Reserved         --</span></span><br><span class="line"><span class="comment">-- Proprietary and confidential to Microsoft Corporation                      --       </span></span><br><span class="line"><span class="comment">-- File:      CatchupETLGrooming.sql                                          --</span></span><br><span class="line"><span class="comment">-- Contents: A bug in the ETL grooming code could have left the customer      --</span></span><br><span class="line"><span class="comment">-- Database with a large amount of ETL rows to groom. This script will groom   --</span></span><br><span class="line"><span class="comment">-- The ETL entries in a loop 100K rows at a time to avoid filling up the        --</span></span><br><span class="line"><span class="comment">-- Transaction log                                                             --</span></span><br><span class="line"><span class="comment">---------------------------------------------------------------------------------</span></span><br><span class="line"><span class="keyword">DECLARE</span> @RowCount <span class="built_in">int</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">DECLARE</span> @BatchSize <span class="built_in">int</span> = <span class="number">100000</span>;</span><br><span class="line"><span class="keyword">DECLARE</span> @SubscriptionWatermark <span class="built_in">bigint</span> = <span class="number">0</span>;     </span><br><span class="line"><span class="keyword">DECLARE</span> @LastErr <span class="built_in">int</span>;</span><br><span class="line"><span class="comment">-- Delete rows from the EntityTransactionLog. We delete the rows with TransactionLogId that aren't being</span></span><br><span class="line"><span class="comment">-- used anymore by the EntityChangeLog table and by the RelatedEntityChangeLog table.</span></span><br><span class="line"><span class="keyword">SELECT</span> @SubscriptionWatermark = dbo.fn_GetEntityChangeLogGroomingWatermark();</span><br><span class="line">WHILE(@RowCount &gt; 0)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  <span class="keyword">DELETE</span> TOP(@BatchSize) ETL  </span><br><span class="line">  <span class="keyword">FROM</span> EntityTransactionLog ETL</span><br><span class="line">  <span class="keyword">WHERE</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> <span class="number">1</span> <span class="keyword">FROM</span> EntityChangeLog ECL <span class="keyword">WHERE</span> ECL.EntityTransactionLogId = ETL.EntityTransactionLogId) <span class="keyword">AND</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> <span class="number">1</span> <span class="keyword">FROM</span> RelatedEntityChangeLog RECL</span><br><span class="line">  <span class="keyword">WHERE</span> RECL.EntityTransactionLogId = ETL.EntityTransactionLogId)</span><br><span class="line">  <span class="keyword">AND</span> ETL.EntityTransactionLogId &lt; @SubscriptionWatermark;        </span><br><span class="line">  <span class="keyword">SELECT</span> @LastErr = @@<span class="keyword">ERROR</span>, @RowCount = @@ROWCOUNT;            </span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>Remove Agents from pending management</p>
-<ul>
-<li>In the Administration pane, expand Device Management, and then click Pending Management.</li>
-<li>Right-click each agent, and then click Approve or Reject.</li>
-</ul>
-</li>
-<li><p>Disable notification subscriptions</p>
-<ul>
-<li>Also in Administration view, expand Administration, expand the Notifications container, and then click Subscriptions.</li>
-<li>Select each subscription, and then click Disable in the Actions pane. (Do not try to multi select)</li>
-</ul>
-</li>
-<li><p>Verify the OM database has more than 50 percent free</p>
-<ul>
-<li>Open SSMS, expand Databases and right-click the OperationsManager database, select to Reports, Standard Reports, and then click Disk Usage.</li>
-<li>View the Disk Usage report. If the database does not have 50 percent free, right-click the OperationsManager database, and then click Properties. </li>
-<li>Under Select a page, click Files. In the results pane, increase the Initial Size value for the MOM_DATA database by 50 percent.</li>
-</ul>
-</li>
-<li><p>Backup the OM databases (If not backup regularly)</p>
-</li>
-<li><p>Stop Operations Manager services</p>
-</li>
-<li><p>Increase agent HealthService cache size</p>
-<ul>
-<li>Update the following registry setting on the agents: <code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlsSet\Services\HealthService\Parameters\Management Groups&lt;ManagementGroupName&gt;\maximumQueueSizeKb</code></li>
-<li>Default is 15360 (15 MB), change it to is 76800 (75 MB).</li>
-<li>Reset it back after upgrading.</li>
-</ul>
-</li>
-</ol>
-<h2 id="Upgrade"><a href="#Upgrade" class="headerlink" title="Upgrade"></a>Upgrade</h2><h2 id="Post-Upgrade"><a href="#Post-Upgrade" class="headerlink" title="Post-Upgrade"></a>Post-Upgrade</h2><ol>
-<li><p>Re-enable the Notification Subscriptions</p>
-</li>
-<li><p>Reset agent HealthService Cache size</p>
-</li>
-<li><p>Verify the upgrade was successful</p>
-</li>
-</ol>
-<h2 id="Next-Step"><a href="#Next-Step" class="headerlink" title="Next Step"></a>Next Step</h2><ol>
-<li>See how to push agents</li>
-<li>Get familiar to other management packs</li>
-</ol>
-<p>(Ref: <a href="https://docs.microsoft.com/en-us/system-center/scom/deploy-upgrade-overview?view=sc-om-2016" target="_blank" rel="noopener">M$ SCOM Documents</a>)</p>
-<!-- link -->
-
+        
+            <div class="readmore">
+                <a href="/2018/10/26/SCOM-upgrade/" class="flat-box">READ MORE</a>
+            </div>
         
 
         
@@ -270,7 +226,7 @@
             <article class="post reveal ">
     <section class="meta">
         <h2 class="title">
-            <a href="/2018/03/02/CS61A - Copy/">
+            <a href="/2018/03/02/CS61A/">
                 
                     CS61A 2018 Pathway
                 
@@ -282,230 +238,22 @@
         
     
     <div class="cats">
-        <a href="/categories/Computer/">Computer</a>, <a href="/categories/Computer/Foundation/">Foundation</a>
+        <a href="/categories/Academic/">Academic</a>
     </div>
 
 
     </section>
 
     <section class="article typo">
-        <script src="\assets\js\APlayer.min.js"> </script><h1 id="Amblizer’s-Pathway-of-CS-61A-2018"><a href="#Amblizer’s-Pathway-of-CS-61A-2018" class="headerlink" title="Amblizer’s Pathway of CS 61A 2018"></a>Amblizer’s Pathway of CS 61A 2018</h1><p>This is my learning path of CS 61A, you can check at <a href="https://github.com/Amblizer/CS-61A-Structure-and-Interpretation-of-Computer-Programs" target="_blank" rel="noopener"><em>my github repository</em></a> for slides.</p>
+        <p>This is my learning path of CS 61A, you can check at <a href="https://github.com/Amblizer/CS-61A-Structure-and-Interpretation-of-Computer-Programs" target="_blank" rel="noopener"><em>my github repository</em></a> for slides.</p>
 <p>ref: <a href="http://mitpress.mit.edu/sicp" target="_blank" rel="noopener">Structure and Interpretation of Computer Programs</a></p>
 <p>Spring 2018</p>
 <p>Instructor: John DeNero</p>
 <!-- links -->
-<h2 id="Pooling-Chart"><a href="#Pooling-Chart" class="headerlink" title="Pooling Chart"></a>Pooling Chart</h2><table>
-<thead>
-<tr>
-<th>Lecture</th>
-<th>Reading</th>
-<th>Note</th>
-<th>Handout</th>
-<th>Homework</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://www.youtube.com/watch?v=v5CP0zpYUcw&amp;list=PL6BsET-8jgYUV8Jxv0D7BLxbg-xIkh0vk&amp;vq=hd1080" target="_blank" rel="noopener">Functions</a></td>
-<td><a href="http://composingprograms.com/pages/11-getting-started.html" target="_blank" rel="noopener">1.1</a>, <a href="http://composingprograms.com/pages/12-elements-of-programming.html" target="_blank" rel="noopener">1.2</a></td>
-<td><a href="https://amblizer.xyz/2018/03/02/cs61a/#1-1-start">Note 1</a></td>
-<td><a href="https://github.com/Amblizer/CS-61A-Structure-and-Interpretation-of-Computer-Programs/tree/master/lab00/" target="_blank" rel="noopener">Lab 00: Introduction &amp; Workflow</a></td>
-</tr>
-<tr>
-<td><a href="https://www.youtube.com/watch?v=hdVG0P11G94&amp;list=PL6BsET-8jgYW16P20tNV8hwpBUiCyQB5c&amp;vq=hd1080" target="_blank" rel="noopener">Names</a></td>
-<td><a href="http://composingprograms.com/pages/13-defining-new-functions.html" target="_blank" rel="noopener">1.3</a>, <a href="http://composingprograms.com/pages/14-designing-functions.html" target="_blank" rel="noopener">1.4</a></td>
-<td><a href="https://amblizer.xyz/2018/03/02/cs61a/#1-3-define-functions">Note 2</a></td>
-<td><a href="https://github.com/Amblizer/CS-61A-Structure-and-Interpretation-of-Computer-Programs/tree/master/disc00/" target="_blank" rel="noopener">Disc 00: Lost on the Moon</a></td>
-<td><a href="https://github.com/Amblizer/CS-61A-Structure-and-Interpretation-of-Computer-Programs/tree/master/hw01/" target="_blank" rel="noopener">HW 01</a></td>
-</tr>
-</tbody>
-</table>
-<!-- links -->
-<!-- TOC -->
-<ul>
-<li><a href="#amblizers-pathway-of-cs-61a-2018">Amblizer’s Pathway of CS 61A 2018</a><ul>
-<li><a href="#pooling-chart">pooling chart</a></li>
-<li><a href="#suggested-accompany">suggested accompany</a></li>
-<li><a href="#1-1-start">1-1 start</a></li>
-<li><a href="#1-2-elements-of-programming">1-2 elements of programming</a></li>
-<li><a href="#1-3-define-functions">1-3 define functions</a></li>
-<li><a href="#1-4-designing-functions">1-4 designing functions</a></li>
-<li><a href="#1-5-control">1-5 control</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-
-<h2 id="suggested-accompany"><a href="#suggested-accompany" class="headerlink" title="suggested accompany"></a>suggested accompany</h2><ul>
-<li><a href="http://data8.org/" target="_blank" rel="noopener">Data8</a> for data science, of fundamentals of computing, statistical inference, &amp; machine learning applied to real-world data setsmachine learning, with ore statistics than computer science. A great programming practice for CS 61A</li>
-</ul>
-<h2 id="1-1-start"><a href="#1-1-start" class="headerlink" title="1-1 start"></a>1-1 start</h2><ol>
-<li><p>Priciples: beauty, simplicity and readability</p>
-</li>
-<li><p>Definitions:</p>
-<ul>
-<li>Statements: codes usually describe actions</li>
-<li>Expressions: codes do computations</li>
-<li>Functions: a box of series of statements and/or expressions</li>
-<li>Objects: data and its unalienable properties</li>
-<li><p>Interpreters: to evaluate compound expressions in a predictable way</p>
-<blockquote>
-<p>functions are objects, objects are functions, and interpreters are instances of both.</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>Expect errors:</p>
-<ul>
-<li>Debugging: know error itself and dignose it</li>
-<li><p>Priciples of debugging:</p>
-<ul>
-<li>Test incrementally, identify probles early and easily</li>
-<li>Isolate errors, localise according to output</li>
-<li>Check assumptions, make sure assumptions check with codes precisely</li>
-<li><p>Peer consulting, chart of valuable helpers</p>
-<p>  Name|Specialize<br>  —|—<br>  <a href="https://docs.python.org/3/index.html" target="_blank" rel="noopener">Official Py Documentation</a>|Everything</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>The fundamental equation of computers is:</p>
-<p>computer = powerful + stupid</p>
-<p>Programming is about a person using their real insight to build something that the computer can do.</p>
-<p>— Francisco Cai and Nick Parlante, Stanford CS101</p>
-</blockquote>
-<!-- links -->
-<h2 id="1-2-elements-of-programming"><a href="#1-2-elements-of-programming" class="headerlink" title="1-2 elements of programming"></a>1-2 elements of programming</h2><ol>
-<li><p>Aims programming serves:</p>
-<ul>
-<li>instruction to a computer</li>
-<li>a framework of ideas, which is mor important</li>
-</ul>
-</li>
-<li><p>Notice means to combine simple expresions and statement to complex combination and abstractions</p>
-</li>
-<li><p>Expression: operators and operands</p>
-<ul>
-<li>with infix notation, eg. 1/2 + (1/4 + 1/8 + 1/16) + 1/32 + 1/64 + 1/128</li>
-<li>with function notaton, eg. max(min(1, -2), min(pow(3, 5), -4)), and have <strong>THREE</strong> advantages over infix ones:<ul>
-<li>arbitary number of arguments</li>
-<li>nested expressions in a straightforward way</li>
-<li>easy to type, no limit to kinds</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Definitions:</p>
-<ul>
-<li>‘=’: assignment operator</li>
-<li>names: variable nams</li>
-<li>trees: grow from the top down</li>
-</ul>
-</li>
-<li><p>Pure and non-pure functions</p>
-<ul>
-<li><em>Pure function</em> have no side effects beyond return a value, call it for arbitary times with the same arguments must return same values.</li>
-<li><em>Non-pure function</em> have side effects</li>
-<li>Advantages of pure over non-pure:<ul>
-<li>more reliable to compose</li>
-<li>simpler to test</li>
-<li>essential for concurrent programs</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p><em>The Zen of Python</em> by Tim Peters</p>
-<p>Beautiful is better than ugly.<br>Explicit is better than implicit.<br>Simple is better than complex.<br>Complex is better than complicated.<br>Flat is better than nested.<br>Sparse is better than dense.<br>Readability counts.<br>Special cases aren’t special enough to break the rules.<br>Although practicality beats purity.<br>Errors should never pass silently.<br>Unless explicitly silenced.<br>In the face of ambiguity, refuse the temptation to guess.<br>There should be one– and preferably only one –obvious way to &gt;do it.<br>Although that way may not be obvious at first unless you’re &gt;Dutch.<br>Now is better than never.<br>Although never is often better than <em>right</em> now.<br>If the implementation is hard to explain, it’s a bad idea.<br>If the implementation is easy to explain, it may be a good &gt;idea.<br>Namespaces are one honking great idea – let’s do more of those!</p>
-</blockquote>
-<h2 id="1-3-define-functions"><a href="#1-3-define-functions" class="headerlink" title="1-3 define functions"></a>1-3 define functions</h2><ol>
-<li><p>A function have signature and body</p>
-<ul>
-<li>Singature have all variebles needed</li>
-<li>body indict expressions and statements</li>
-</ul>
-</li>
-<li><p>Names of variebles remain local within function bodies</p>
-</li>
-<li><p>Choosing names: essential to the interpretability, and usually follow simple rules:</p>
-<ul>
-<li>lowercase, words separated by underscores, good to be descriptive</li>
-<li>parameter names should be lowercase, in single word, and meaningful</li>
-</ul>
-</li>
-<li><p>A helper function can be write at a a later time in the function</p>
-</li>
-<li><p>Functional abstracion:</p>
-<ul>
-<li>Domain:</li>
-<li>Range:</li>
-<li>Intention:</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>A programmer should not need to know how the function is implemented in order to use it</p>
-</blockquote>
-<h2 id="1-4-designing-functions"><a href="#1-4-designing-functions" class="headerlink" title="1-4 designing functions"></a>1-4 designing functions</h2><ol>
-<li><p>Functions are abstractions:</p>
-<ul>
-<li>Single job for each function, with a shortname and a short description</li>
-<li>Don’t repeat, abstract</li>
-<li>Generally defined, considering broader usage.</li>
-</ul>
-</li>
-<li><p>Use docstring, triple quoted:</p>
-<ul>
-<li>First line: job of the function</li>
-<li>Following lines: argument and behavior</li>
-<li>Use <em>help(function)</em> to see the docstring</li>
-<li>Write docstrings for all functions necessary</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>Code is written only once, but often read many times.</p>
-</blockquote>
-<ol>
-<li><p>Comments: attached following the # symbol, fr humans alone</p>
-</li>
-<li><p>Values should be assigned defauts in most cases.</p>
-</li>
-</ol>
-<h2 id="1-5-control"><a href="#1-5-control" class="headerlink" title="1-5 control"></a>1-5 control</h2><ol>
-<li>Definitions<ul>
-<li>Statement: to change thethe interpreter state</li>
-<li>Clause: a header and an indented suit of statemtns, and a suite is controlled by a header</li>
-<li>Compound Statement: consists of arbitary number of clauses</li>
-<li>Execution rule: excuted in order, end by redirection to  control</li>
-<li>Modular Programs: where pure functions interact only via the values they take and return.</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>To execute a sequence of statements, execute the first statement. If that statement does not redirect control, then proceed to execute the rest of the sequence of statements, if any remain.</p>
-</blockquote>
-<ol>
-<li><p>Local Assignment: bind a name to a value within the local frame</p>
-</li>
-<li><p>Conditional statements: conditional statements, bool contexts, bool values</p>
-</li>
-<li><p>Iteration</p>
-</li>
-<li><p>Testing</p>
-<ul>
-<li>Assert statments: followed by a bool expression, and a text for <em>FALSE</em>, proceeded to next only when expectation is met.</li>
-<li>Doctests: seperate by a blank line from the description</li>
-<li>Unit Test: test that applies a single function, should be exhaustive.</li>
-<li>Key: test immediately after implementing</li>
-</ul>
-</li>
-</ol>
-
+        
+            <div class="readmore">
+                <a href="/2018/03/02/CS61A/" class="flat-box">READ MORE</a>
+            </div>
         
 
         
@@ -536,134 +284,23 @@
         
     
     <div class="cats">
-        
+        <a href="/categories/Academic/">Academic</a>
     </div>
 
 
     </section>
 
     <section class="article typo">
-        <script src="\assets\js\APlayer.min.js"> </script><img src="/2018/02/11/SCU-Memo/Bronco.jpg">
-<h2 id="先贴上组织-Groupchat-for-Santa-Clara-University"><a href="#先贴上组织-Groupchat-for-Santa-Clara-University" class="headerlink" title="先贴上组织 | Groupchat for Santa Clara University"></a>先贴上组织 | Groupchat for Santa Clara University</h2><ol>
+        <h2 id="先贴上组织-Groupchat-for-Santa-Clara-University"><a href="#先贴上组织-Groupchat-for-Santa-Clara-University" class="headerlink" title="先贴上组织 | Groupchat for Santa Clara University"></a>先贴上组织 | Groupchat for Santa Clara University</h2><ol>
 <li>SCU 2018 QQ Group: 699733238</li>
 <li>SCU Global Telegram Group: <a href="https://t.me/SCUer" target="_blank" rel="noopener">https://t.me/SCUer</a></li>
 <li>SCU 2018 Wechat Group (If it expired let me know pls):</li>
 </ol>
 <img src="/2018/02/11/SCU-Memo/SCUWeChat.jpg">
-<h2 id="申请-I-20-表-I-20-Prerequisites"><a href="#申请-I-20-表-I-20-Prerequisites" class="headerlink" title="申请 I-20 表 | I-20 Prerequisites"></a>申请 I-20 表 | I-20 Prerequisites</h2><p><em><strong>2018年02月27日更新：</strong></em></p>
-<p><em>刚收到 SCU 邮件，要求等4月底 estimated expense 更新后再寄送材料。因为更新后需要的存款证明数额有可能发生变化，如果想现在开证明建议多开一些数额。</em></p>
-<p>准备材料 | Paperworks:</p>
-<ol>
-<li><p>I-20 申请表 | I-20 request：<a href="https://www.scu.edu/media/offices/global-engagement/iss/forms/I-20-Request-Form-2016.pdf" target="_blank" rel="noopener">点击下载</a></p>
-</li>
-<li><p>存款证明 | funding proof: <a href="https://www.scu.edu/globalengagement/international-students/apply-and-getting-started/immigration-process/proof-of-funding-requirements/" target="_blank" rel="noopener"><del>2017-2018年度：$46,209，具体形式点击查看详情</del> 等待4月底更新</a></p>
-</li>
-<li><p>护照扫描件 | passport scan</p>
-</li>
-</ol>
-<p>然后将以上材料发送至 <a href="mailto:gradengineer@scu.edu" target="_blank" rel="noopener">gradengineer@scu.edu</a>，I-20的发放通常需要15个工作日审核，美国境外的申请者会通过 FedEx 或 DHL 寄送。</p>
-<h2 id="付费，填写-DS-160-表格-Pay-SEVIS-take-DS-160"><a href="#付费，填写-DS-160-表格-Pay-SEVIS-take-DS-160" class="headerlink" title="付费，填写 DS-160 表格 | Pay SEVIS, take DS-160"></a>付费，填写 DS-160 表格 | Pay SEVIS, take DS-160</h2><ol>
-<li><p>填写 I-901 表格，付SEVIS费，<a href="https://www.fmjfee.com/i901fee/index.html" target="_blank" rel="noopener">点击填写</a></p>
-</li>
-<li><p>填写 DS-160 表格，<a href="https://ceac.state.gov/genniv/default.aspx" target="_blank" rel="noopener">点击填写</a></p>
-</li>
-</ol>
-<h2 id="付费，预约面签-Pay-and-arrange-interview"><a href="#付费，预约面签-Pay-and-arrange-interview" class="headerlink" title="付费，预约面签 | Pay and arrange interview"></a>付费，预约面签 | Pay and arrange interview</h2><ul>
-<li><p>预约时间不能早于 I-20 上入学时间120天 | No prior to the commencement date on I-20.</p>
-</li>
-<li><p>最好用中信银行卡 | CITIC bank debit card is better (Chinese only)</p>
-</li>
-<li><p>准备好护照、DS-160、I-20，<a href="http://www.ustraveldocs.com/cn_zh/index.html" target="_blank" rel="noopener">点击填写</a>，费用160美元 | Take your passport, DS-160, I-20</p>
-</li>
-</ul>
-<h2 id="面签-Interview"><a href="#面签-Interview" class="headerlink" title="面签 | Interview"></a>面签 | Interview</h2><p>身份证明 | Proof of Identity</p>
-<ol>
-<li>护照 passport</li>
-<li>I-20</li>
-<li>SEVIS 收据 novice</li>
-<li>预约面签付费确认 interview payment novice</li>
-<li>个人简历 resume</li>
-</ol>
-<p>学习证明 | Proof of Sduty</p>
-<ol>
-<li>录取通知 | admission letter (print it out)</li>
-<li>TOEFL、GRE 成绩单 reports</li>
-<li>学习计划 study plan</li>
-<li>Head of department CV (如果没有research advisor， Nam Ling)</li>
-</ol>
-<p>财力证明 | Proof of Funding</p>
-<ol>
-<li>存款证明（最近即可，无需冻结） proof of funding</li>
-<li>sponsor letter</li>
-<li>银行流水？ Transactions (Necesssary?)</li>
-</ol>
-<p>补充证明 | Additional Proof</p>
-<ol>
-<li>在职证明、职业资格证书 professional cert / qualification</li>
-<li>和父母的照片 family photo</li>
-<li>结婚证 (Marriage License, if you have)</li>
-</ol>
-<p>还有到场后会发的准入证</p>
-<p>不能带入美使领馆 | Do not take</p>
-<ol>
-<li>电子产品 electronic devices</li>
-</ol>
-<p>F-1、B-2 面签注意 | FAQs</p>
-<ol>
-<li>英文打招呼，表明自己准备好语言能力 using English</li>
-<li>保持自信 be confident</li>
-</ol>
-<p>常见问题，可稍做准备，不要啰嗦 | frequent asking</p>
-<ul>
-<li>Why do you want to study in the U.S.?</li>
-<li>Which school are you going to?</li>
-<li>Why you choose this school?</li>
-<li>Who is paying for the study?</li>
-<li>What is your current job? And some follow-up detail questions about the job.</li>
-<li>What do you want to do after the study?</li>
-<li>Do you have any relative in U.S. ?</li>
-<li>Where are your parents and what do they do for a living?</li>
-<li>Do you have girlfriend/boyfriend?</li>
-<li>Are you married?</li>
-<li>Do you have children?</li>
-<li>How are you going to handle it if …(you decided to go for the study alone and be separated from the girlfriend/boyfriend, husband/wife/children, etc.)</li>
-</ul>
-<h2 id="赴美准备"><a href="#赴美准备" class="headerlink" title="赴美准备"></a>赴美准备</h2><p>F-1 签证赴美时间可比I-20开学时间早至多30天</p>
-<p>需随身携带：</p>
-<ul>
-<li>护照原件</li>
-<li>I-20原件</li>
-<li>录取通知书</li>
-<li>存款证明</li>
-<li>随身药物对应的处方</li>
-<li>少量现金</li>
-<li>美标手机充电器</li>
-<li>书面紧急联系人信息</li>
-<li>书面出行计划</li>
-</ul>
-<h2 id="赴美当日"><a href="#赴美当日" class="headerlink" title="赴美当日"></a>赴美当日</h2><p>过海关，准备：</p>
-<ul>
-<li>存款证明</li>
-<li>回答学校相关问题<ul>
-<li>地点</li>
-<li>项目</li>
-<li>就学期间住所</li>
-<li>如何付学费</li>
-</ul>
-</li>
-</ul>
-<p>过关后：</p>
-<ul>
-<li>确认取回护照和 I-20 原件</li>
-<li>确认拿到I-94(<a href="https://i94.cbp.dhs.gov/I94/#/home" target="_blank" rel="noopener">Electronic Admission Record or I-94.</a>)</li>
-</ul>
-<p>出机场：</p>
-<ul>
-<li>SJC (San Jose Airport): 机场到学校有<a href="http://www.vta.org/routes/rt10" target="_blank" rel="noopener">VTA免费班车</a>，十几分钟</li>
-<li>SFO (San Francisco International Airport): Bay Area Rapid Transit (BART) 和 Caltrain，90分钟</li>
-<li>OAK (Oakland International Airport): 2.5小时</li>
-</ul>
-
+        
+            <div class="readmore">
+                <a href="/2018/02/11/SCU-Memo/" class="flat-box">READ MORE</a>
+            </div>
         
 
         
@@ -684,7 +321,7 @@
             <article class="post reveal ">
     <section class="meta">
         <h2 class="title">
-            <a href="/2018/02/09/北国の春/">
+            <a href="/2018/02/09/Northern-Spring/">
                 
                     千昌夫 - 北国の春
                 
@@ -696,141 +333,20 @@
         
     
     <div class="cats">
-        <a href="/categories/Song/">Song</a>, <a href="/categories/Song/Japanese/">Japanese</a>
+        <a href="/categories/Music/">Music</a>
     </div>
 
 
     </section>
 
     <section class="article typo">
-        <script src="\assets\js\APlayer.min.js"> </script><h1 id="北国の春-by-千昌夫"><a href="#北国の春-by-千昌夫" class="headerlink" title="北国の春 by 千昌夫"></a>北国の春 by 千昌夫</h1><!-- <div id="aplayer2" class="aplayer" style="margin-bottom: 20px;"></div>
-		<script>
-			var ap = new APlayer({
-				element: document.getElementById("aplayer2"),
-				narrow: false,
-				autoplay: false,
-				showlrc: 0,
-				music: {
-					title: "千昌夫",
-					author: "北国の春",
-					url: "/2018/02/09/北国の春/千昌夫%20-%20北国の春.mp3",
-					pic: "",
-				}
-			});
-			window.aplayers || (window.aplayers = []);
-			window.aplayers.push(ap);
-		</script> –&gt;
-<!--  -->
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=519006&auto=1&height=66"></iframe>
-
-<p>白樺（しら　かば）　青空（あおぞら）　南風（みなみかぜ）</p>
+        <p>白樺（しら　かば）　青空（あおぞら）　南風（みなみかぜ）</p>
 <p>こぶし咲（さく）　あの丘（おか）北国（きたくに）の</p>
 <p>ああ　北国の春（はる）</p>
-<p>季節（きせつ）が　都会（とかい）で　はわからないだろと</p>
-<p>届（とど）いた　ふくろの　小（ちい）さな　つつみ</p>
-<p>あの　故郷（ふるさと）へ　帰（かえ）ろかな　帰ろかな</p>
-<hr>
-<img src="/2018/02/09/北国の春/ikoi6350-5.jpg">
         
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/Japanese/"><i class="fa fa-tag fa-fw"></i>&nbsp;Japanese</a>
-                
+            <div class="readmore">
+                <a href="/2018/02/09/Northern-Spring/" class="flat-box">READ MORE</a>
             </div>
-        
-    </section>
-</article>
-
-        </div>
-    
-        <div class="post-wrapper">
-            <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2017/12/31/偿い/">
-                
-                    つぐない（偿还）平假名歌词
-                
-            </a>
-        </h2>
-        <time>
-            <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;2017-12-31
-        </time>
-        
-    
-    <div class="cats">
-        <a href="/categories/Lyric/">Lyric</a>, <a href="/categories/Lyric/Japanese/">Japanese</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <script src="\assets\js\APlayer.min.js"> </script><h1 id="つぐない-by-テレサ．テン"><a href="#つぐない-by-テレサ．テン" class="headerlink" title="つぐない by テレサ．テン"></a>つぐない by テレサ．テン</h1><div id="aplayer0" class="aplayer" style="margin-bottom: 20px;"></div>
-		<script>
-			var ap = new APlayer({
-				element: document.getElementById("aplayer0"),
-				narrow: false,
-				autoplay: false,
-				showlrc: 0,
-				music: {
-					title: "つぐない",
-					author: "テレサ・テン",
-					url: "/2017/12/31/偿い/テレサ・テン%20-%20つぐない.mp3",
-					pic: "",
-				}
-			});
-			window.aplayers || (window.aplayers = []);
-			window.aplayers.push(ap);
-		</script>
-<p>窓（まど）に西日（にしび）が</p>
-<p>あたる部屋（へや）は</p>
-<p>いつもあなたの</p>
-<p>匂（にお）いがすろわ</p>
-<p>一人（ひとり）暮（く）らせば</p>
-<p>思（おも）い出（だ）すから</p>
-<p>壁（かべ）の傷（きず）も</p>
-<p>残（のこ）したまま</p>
-<p>おいてゆくわ</p>
-<hr>
-<p>愛をつぐなえば</p>
-<p>别(わか)れになるけど</p>
-<p>こんな女（おんな）でも</p>
-<p>忘（わす）れないでね</p>
-<p>優（やさ）しいすぎたのあなた</p>
-<p>子供（こども）見（み）たいなあなた</p>
-<p>明日（あす）は他人同士（たにんどうし）に</p>
-<p>なるけれど</p>
-<hr>
-<p>心(こころ)残(のこ)りは</p>
-<p>あなたのこと</p>
-<p>少(すこ)し烟草(たばこ)も</p>
-<p>ひかえめにして</p>
-<p>过去(かこ)に缚(しば)られ</p>
-<p>暮(く)らすことより</p>
-<p>わたしよりも可爱(かわい)い人</p>
-<p>探(さが)すことよ</p>
-<hr>
-<p>爱(あい)をつぐなえば</p>
-<p>重荷(おもに)になるから</p>
-<p>この町(まち)を离(はな)れ</p>
-<p>暮(く)らしてみるわ</p>
-<p>お酒(さけ)のむのも ひとり</p>
-<p>梦(ゆめ)を见(み)るのも ひとり</p>
-<p>明日（あす）は他人同士（たにんどうし</p>
-<p>なるけれど</p>
-<hr>
-<p>爱(あい)をつぐなえば</p>
-<p>别(わか)れになるけど</p>
-<p>こんな女(おんな)でも</p>
-<p>忘(わす)れないでね</p>
-<p>優(やさ)しいすぎたのあなた</p>
-<p>子供(こども)见(み)たいなあなた</p>
-<p>明日(あす)は他人同志(たにんどうし)に</p>
-<p>なるけれど</p>
-<img src="/2017/12/31/偿い/Teng.jpg">
         
 
         
@@ -868,23 +384,12 @@
     </section>
 
     <section class="article typo">
-        <script src="\assets\js\APlayer.min.js"> </script><img src="/2017/12/05/Django-First-Met/header.jpg">
-<h1 id="Django-First-Met"><a href="#Django-First-Met" class="headerlink" title="Django First Met"></a>Django First Met</h1><p>As demanded by my instructor, I need to grab the essence of Django in three weeks, which is not quite possible for a non-native CS candidate. Still, I struggled to follow the instructions given in the official document, and, well, not THAT official, that I’m actually doing a step by step tutorial in mandarin, which lags in the version of 1.10.5 instead of the newly announced 2.0. But this doesn’t trouble me at all since Anaconda also doesn’t provide the latest 2.0 update in the repertoire.</p>
-<p>So I just began.</p>
-<h2 id="Implementing-Virtual-environment"><a href="#Implementing-Virtual-environment" class="headerlink" title="Implementing Virtual environment"></a>Implementing Virtual environment</h2><p>I heard that functions in Django differ across various versions, and to save the trouble I implemented in virtual envs in Anaconda.</p>
-<p>Simply create a new env use:</p>
-<pre><code>&gt;conda create -n Django1
-</code></pre><p>Activate it:</p>
-<pre><code>&gt;activate Django1
-</code></pre><p>And install the proper version of Django:</p>
-<pre><code>(django1) &gt;conda install Django=1.10.5
-</code></pre><h3 id="Create-Django-Project"><a href="#Create-Django-Project" class="headerlink" title="Create Django Project"></a>Create Django Project</h3><p>In workspace directory, use:</p>
-<pre><code>(django1) &gt;django-admin startproject blogproject
-</code></pre><p>Be sure to stay in the virtual env.</p>
-<h3 id="Test-the-server"><a href="#Test-the-server" class="headerlink" title="Test the server"></a>Test the server</h3><p>To start the local server iIn blogproject directory use:</p>
-<pre><code>(django1) &gt;python manage.py runserver
-</code></pre><p>Then visit localhost:8000 in a browser.</p>
-
+        <p>As demanded by my instructor, I need to grab the essence of Django in three weeks, which is not quite possible for a non-native CS candidate. Still, I struggled to follow the instructions given in the official document, and, well, not THAT official, that I’m actually doing a step by step tutorial in mandarin, which lags in the version of 1.10.5 instead of the newly announced 2.0. But this doesn’t trouble me at all since Anaconda also doesn’t provide the latest 2.0 update in the repertoire.</p>
+<p>So I just began.<br>
+        
+            <div class="readmore">
+                <a href="/2017/12/05/Django-First-Met/" class="flat-box">READ MORE</a>
+            </div>
         
 
         
@@ -896,7 +401,52 @@
                 
             </div>
         
+    </p></section>
+</article>
+
+        </div>
+    
+        <div class="post-wrapper">
+            <article class="post reveal ">
+    <section class="meta">
+        <h2 class="title">
+            <a href="/2017/12/01/Repay/">
+                
+                    テレサ．テン(邓丽君) - つぐない（偿还）
+                
+            </a>
+        </h2>
+        <time>
+            <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;2017-12-01
+        </time>
+        
+    
+    <div class="cats">
+        <a href="/categories/Music/">Music</a>
+    </div>
+
+
     </section>
+
+    <section class="article typo">
+        <p>窓（まど）に西日（にしび）が</p>
+<p>あたる部屋（へや）は</p>
+<p>いつもあなたの</p>
+<p>匂（にお）いがすろわ<br>
+        
+            <div class="readmore">
+                <a href="/2017/12/01/Repay/" class="flat-box">READ MORE</a>
+            </div>
+        
+
+        
+            <div class="full-width auto-padding tags">
+                
+                    <a href="/tags/Japanese/"><i class="fa fa-tag fa-fw"></i>&nbsp;Japanese</a>
+                
+            </div>
+        
+    </p></section>
 </article>
 
         </div>
@@ -917,64 +467,18 @@
         
     
     <div class="cats">
-        <a href="/categories/Song/">Song</a>, <a href="/categories/Song/Japanese/">Japanese</a>
+        <a href="/categories/Music/">Music</a>
     </div>
 
 
     </section>
 
     <section class="article typo">
-        <script src="\assets\js\APlayer.min.js"> </script><h1 id="竹の歌-by-中岛みゆき"><a href="#竹の歌-by-中岛みゆき" class="headerlink" title="竹の歌 by 中岛みゆき"></a>竹の歌 by 中岛みゆき</h1><!-- <div id="aplayer1" class="aplayer" style="margin-bottom: 20px;"></div>
-		<script>
-			var ap = new APlayer({
-				element: document.getElementById("aplayer1"),
-				narrow: false,
-				autoplay: false,
-				showlrc: 0,
-				music: {
-					title: "竹の歌",
-					author: "中岛みゆき",
-					url: "/2017/11/02/Bamboo-Song/中島みゆき%20-%20竹の歌.mp3",
-					pic: "",
-				}
-			});
-			window.aplayers || (window.aplayers = []);
-			window.aplayers.push(ap);
-		</script> –&gt;
-<!--  -->
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=25916023&auto=1&height=66"></iframe>
-
-<p>Started to learn Japanese, hiragana seems a bit of troubling of its resembling of mandarin characters. Though being nervous these days, Jap songs, especially those from 80s and 90s, comfort me most, and it is an major cause for me to learn the language. So start with a rather easy one, the bamboo song by Miyuki Nakajima</p>
-<hr>
-<p>遥（はる）かな山（やま）から吹（ふ）きつける風（かぜ）に</p>
-<p>ひれ伏（ふ）しながら　けして折（お）れはせぬ</p>
-<p>押（お）し寄（よ）せる雲（くも）から打ちやまぬ雨（あめ）に</p>
-<p>ひれ伏（ふ）しながら　けして折（お）れはせぬ</p>
-<p>私（わたし）がなりたいものはといえば</p>
-<p>地下（ちか）に根（ね）を張（は）る　あの竹林（たけばやし）</p>
-<hr>
-<p>月（つき）の日（ひ）　火（ひ）の日（ひ）　水（みず）の日（ひ）　木（き）の日（ひ）</p>
-<p>金（がね）に踊（おど）って　土（つち）と日（ひ）に還（かえ）る</p>
-<p>私（わたし）が住（す）みたい国（くに）はといえば</p>
-<p>地下（ちか）に根（ね）を張（は）る　あの竹（たけ）の国（くに）</p>
-<hr>
-<p>ゆく夏（なつ）来（く）る夏（なつ）　照（で）りつける熱（ねつ）に</p>
-<p>埋（う）ずもれながら　けして消（き）えはせぬ</p>
-<p>青（あお）に黄（き）に緑（みどり）に　移（うつ）りゆく旗（はた）に</p>
-<p>移（うつ）ろいながら　けして消（き）えはせぬ</p>
-<p>私（わたし）が覚（おぼ）えて残（のこ）せるものは</p>
-<p>地下（ちか）に根（ね）を張（は）る　あの竹（たけ）の歌（うた）</p>
-<hr>
-<p>月（つき）の日（ひ）　火（ひ）の日（ひ）　水（みず）の日（ひ）　木（き）の日（ひ）</p>
-<p>金（がね）に踊（おど）って　土（つち）と日（ひ）に還（かえ）る</p>
-<p>私（わたし）が覚（おぼ）えて残（のこ）せるものは </p>
-<p>地下（ちか）に根（ね）を張（は）る　あの竹（たけ）の歌（うた）</p>
-<hr>
-<p>月（つき）の日（ひ）　火（ひ）の日（ひ）　水（みず）の日（ひ）　木（き）の日（ひ）</p>
-<p>金（がね）に踊（おど）って　土（つち）と日（ひ）に還（かえ）る</p>
-<p>私（わたし）がなりたいものはといえば</p>
-<p>地下（ちか）に根（ね）を張（は）る　あの竹林（たけばやし）</p>
-<img src="/2017/11/02/Bamboo-Song/yakai_main.jpg">
+        <p>Started to learn Japanese, hiragana seems a bit of troubling of its resembling of mandarin characters. Though being nervous these days, Jap songs, especially those from 80s and 90s, comfort me most, and it is an major cause for me to learn the language. So start with a rather easy one, the bamboo song by Miyuki Nakajima<br>
+        
+            <div class="readmore">
+                <a href="/2017/11/02/Bamboo-Song/" class="flat-box">READ MORE</a>
+            </div>
         
 
         
@@ -984,7 +488,7 @@
                 
             </div>
         
-    </section>
+    </p></section>
 </article>
 
         </div>
@@ -993,7 +497,7 @@
             <article class="post reveal ">
     <section class="meta">
         <h2 class="title">
-            <a href="/2017/06/10/Saving loop 保存与循环/">
+            <a href="/2017/06/10/Saving-loop/">
                 
                     Saving loop 保存与循环
                 
@@ -1005,18 +509,19 @@
         
     
     <div class="cats">
-        <a href="/categories/Computer/">Computer</a>, <a href="/categories/Computer/Programming/">Programming</a>
+        <a href="/categories/Algorithm/">Algorithm</a>
     </div>
 
 
     </section>
 
     <section class="article typo">
-        <script src="\assets\js\APlayer.min.js"> </script><p>#Saving loop 保存与循环</p>
-<p>The loop ends only when successively saved</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> unsaved:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        wb.save(fn)</span><br><span class="line">        unsaved = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">except</span> PermissionError:</span><br><span class="line">        print(fn, <span class="string">'in use, close and press enter to save again...'</span>)</span><br><span class="line">        input()</span><br><span class="line">        <span class="keyword">continue</span></span><br></pre></td></tr></table></figure>
-<p>anything else？</p>
-<img src="/2017/06/10/Saving%20loop%20保存与循环/Loop_logo.png">
+        <p>#Saving loop 保存与循环</p>
+<p>The loop ends only when successively saved<br>
+        
+            <div class="readmore">
+                <a href="/2017/06/10/Saving-loop/" class="flat-box">READ MORE</a>
+            </div>
         
 
         
@@ -1028,7 +533,7 @@
                 
             </div>
         
-    </section>
+    </p></section>
 </article>
 
         </div>
@@ -1037,9 +542,9 @@
             <article class="post reveal ">
     <section class="meta">
         <h2 class="title">
-            <a href="/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/">
+            <a href="/2017/06/01/Win10-Cuda-TF/">
                 
-                    Windows 10 安装 Cuda 8 + CuDNN 6, Tensorflow 和 keras，附CPU/GPU切换小技巧
+                    Install Cuda 8/CuDNN 6, Tensorflow and Keras on Windows 10
                 
             </a>
         </h2>
@@ -1049,92 +554,21 @@
         
     
     <div class="cats">
-        <a href="/categories/Computer/">Computer</a>, <a href="/categories/Computer/Deep-Learning/">Deep Learning</a>
+        <a href="/categories/Machine-Learning/">Machine Learning</a>
     </div>
 
 
     </section>
 
     <section class="article typo">
-        <script src="\assets\js\APlayer.min.js"> </script><h1 id="Install-Cuda-8-CuDNN-6-Tensorflow-and-Keras-on-Windows-10-methods-to-switch-between-CPU-and-GPU-attached"><a href="#Install-Cuda-8-CuDNN-6-Tensorflow-and-Keras-on-Windows-10-methods-to-switch-between-CPU-and-GPU-attached" class="headerlink" title="Install Cuda 8 + CuDNN 6, Tensorflow and Keras on Windows 10, methods to switch between CPU and GPU attached"></a>Install Cuda 8 + CuDNN 6, Tensorflow and Keras on Windows 10, methods to switch between CPU and GPU attached</h1><p>[Windows 10 安装 Cuda 8 + CuDNN 6, Tensorflow 和 keras，附CPU/GPU切换小技巧]</p>
+        <p>[Windows 10 安装 Cuda 8 + CuDNN 6, Tensorflow 和 keras，附CPU/GPU切换小技巧]</p>
 <p>Updated: Dec 29, 2017</p>
 <p>Originally published on <a href="http://amblizer.xyz/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/">Amblizer.xyz</a>, reblogged in case of blocking</p>
-<p>I’ve tried months ago to install the GPU-based Machine learning framework, namely keras with tensorflow, but get stuck following the official indication of the latter, and the issue remained unresolved until yesterday because of loads of patients in summer vocation, and I finally managed to get m1000m working.</p>
-<p>I basically followed instructions written in Chinese in <a href="http://blog.csdn.net/u012898521/article/details/69611800" target="_blank" rel="noopener">http://blog.csdn.net/u012898521/article/details/69611800</a>, with a few modifications according to keras documentation in Chinese HERE, and actually I did a combination of both.</p>
-<img src="/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/2017-07-19_logo.jpg" title="Tensorflow logo">
-<h2 id="Step-1-Python-with-Anaconda"><a href="#Step-1-Python-with-Anaconda" class="headerlink" title="Step 1 - Python with Anaconda"></a>Step 1 - Python with Anaconda</h2><p><del>By far tensorflow only support python 3 but no newer than major version of 3.5, and last time I got a lot of trouble tried to install the dependencies especially scipy. I didn’t use anaconda because it starts rather slow and Google said you could install tensorflow without it, and it was later I found scipy itself WILL encounter problems when installed on windows.</del></p>
-<p>Just <a href="https://www.anaconda.com/download/?lang=en-us" target="_blank" rel="noopener">download and intall Anaconda 5.0 with python 3</a>, </p>
-<img src="/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/2017-07-19_01.jpg" title="Anaconda">
-<p>Simply install Anaconda with python <del>3.5 (I installed Anaconda 4.2.0 with python 3.5.2)</del> 3.6, and it will save you all the troubles.</p>
-<h2 id="Step-2-—-CUDA-and-CuDNN"><a href="#Step-2-—-CUDA-and-CuDNN" class="headerlink" title="Step 2 — CUDA and CuDNN"></a>Step 2 — CUDA and CuDNN</h2><p>NVIDIA had buried download links to older version of CUDA and CuDNN, so I list the links chart first.</p>
-<table>
-<thead>
-<tr>
-<th>Package</th>
-<th>Compatible with</th>
-<th>Link</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CUDA 9.1</td>
-<td>self-compiled Tensor Flow</td>
-<td><a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="noopener">Click to download</a></td>
-</tr>
-<tr>
-<td>CUDA 8.0.61 &amp; prior</td>
-<td>TensorFlow</td>
-<td><a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">Click to download</a></td>
-</tr>
-<tr>
-<td>CuDNN 6</td>
-<td>TensorFlow</td>
-<td><a href="http://developer2.download.nvidia.com/compute/machine-learning/cudnn/secure/v6/prod/8.0_20170427/cudnn-8.0-windows10-x64-v6.0.zip" target="_blank" rel="noopener">Click to download</a></td>
-</tr>
-<tr>
-<td>CuDNN 5 &amp; prior</td>
-<td>Theano, etc</td>
-<td><a href="https://developer.nvidia.com/rdp/cudnn-archive" target="_blank" rel="noopener">Click to download</a></td>
-</tr>
-</tbody>
-</table>
-<p>CUDA is toolkit enables you to all the fun programming with NVIDIA GPU, you’re welcomed unless your GPU is prior to GTX 500 series.</p>
-<p>You’re encouraged to download <a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">CUDA 8.0.61</a> and <a href="http://developer2.download.nvidia.com/compute/machine-learning/cudnn/secure/v6/prod/8.0_20170427/cudnn-8.0-windows10-x64-v6.0.zip" target="_blank" rel="noopener">CuDNN 6</a> in order to drive TensorFlow 1.4, and you’ll find it somewhat time consuming.</p>
-<img src="/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/2017-07-19_02.jpg" title="CUDA Toolkit">
-<p>Installation is simple a series of ‘Next’s.</p>
-<p>And now you can install CuDNN, an acceleration library for CUDA. You’ll require to signed a developer account in order to get it HERE, and then unzip the folders and overwrite folders at</p>
-<pre><code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\8.0
-</code></pre><p>with same names.</p>
-<h2 id="Step-3-—-Ananconda-Environment-amp-Tensorflow"><a href="#Step-3-—-Ananconda-Environment-amp-Tensorflow" class="headerlink" title="Step 3 — Ananconda Environment &amp; Tensorflow"></a>Step 3 — Ananconda Environment &amp; Tensorflow</h2><p><del>Simply use pip with installation.</del></p>
-<p>Create an Ananconda environment named “tf” using:</p>
-<pre><code>&gt;conda create -n tf
-</code></pre><p>And activate the envirionmant by:</p>
-<pre><code>&gt;activate tf
-</code></pre><p>Then the command shows:</p>
-<pre><code>(tf) C:\Users\username&gt;_
-</code></pre><p>which indicates that you have entered the newly create environment. By using the environment, we can capsule our manuvours within the very space, without influencing that global configuration of the whole system. This is especally useful when you’re testing different versions of same software packages, say, using python 3.5 &amp; 3.6 samultanously.</p>
-<p>To install CPU version(required):</p>
-<pre><code>(tf) C:\Users\username&gt;conda install tensorflow
-</code></pre><p>Test the CPU version tensorflow:</p>
-<pre><code>(tf) C:\Users\username&gt;python
-&gt;&gt;&gt;import tensorflow as tf
-</code></pre><p>To install GPU version(optional)</p>
-<pre><code>(tf) C:\Users\username&gt;conda install tensorflow-gpu
-</code></pre><p>Restart first and then test the GPU version tensorflow:</p>
-<pre><code>(tf) C:\Users\username&gt;python
-&gt;&gt;&gt;import tensorflow as tf
-</code></pre><h2 id="Step-4-—-Keras"><a href="#Step-4-—-Keras" class="headerlink" title="Step 4 — Keras"></a>Step 4 — Keras</h2><p>A line of code will do</p>
-<pre><code>(tf) C:\Users\username&gt;conda install keras
-</code></pre><p>Keras will be installed with theano by default, but it will use tensorflow as the back-end, so don’t panic, and test if keras is installed correctly by</p>
-<pre><code>(tf) C:\Users\username&gt;python
-&gt;&gt;&gt;import keras
-</code></pre><p>Now we could run the MNIST example in Keras with either CPU or GPU</p>
-<h2 id="Step-5-—-Run-and-switch-between-CPU-and-GPU"><a href="#Step-5-—-Run-and-switch-between-CPU-and-GPU" class="headerlink" title="Step 5 — Run and switch between CPU and GPU"></a>Step 5 — Run and switch between CPU and GPU</h2><p>Download keras testing data sets <a href="https://github.com/fchollet/keras.git" target="_blank" rel="noopener">HERE</a>, or if you have git run</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/fchollet/keras.git</span><br></pre></td></tr></table></figure>
-<p>Locate at <code>keras/examples/</code>, and run <code>mnist_mlp.py</code>, if you installed CUDA and CuDNN correctly, it will run on GPU by default, and here’s my running on GPU:</p>
-<img src="/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/2017-07-19_03.jpg" title="MNIST Test">
-<p>Sadly I only have a M1000M on the laptop, of which the performance is compromised. </p>
-
+<p>I’ve tried months ago to install the GPU-based Machine learning framework, namely keras with tensorflow, but get stuck following the official indication of the latter, and the issue remained unresolved until yesterday because of loads of patients in summer vocation, and I finally managed to get m1000m working.<br>
+        
+            <div class="readmore">
+                <a href="/2017/06/01/Win10-Cuda-TF/" class="flat-box">READ MORE</a>
+            </div>
         
 
         
@@ -1142,11 +576,9 @@
                 
                     <a href="/tags/python/"><i class="fa fa-tag fa-fw"></i>&nbsp;python</a>
                 
-                    <a href="/tags/alphabet/"><i class="fa fa-tag fa-fw"></i>&nbsp;alphabet</a>
-                
             </div>
         
-    </section>
+    </p></section>
 </article>
 
         </div>
@@ -1220,27 +652,17 @@
         
             <ul class="entry">
                 
-                    <li><a class="flat-box" href="/categories/CS/"><div class="name">CS</div><div class="badge">2</div></a></li>
+                    <li><a class="flat-box" href="/categories/Academic/"><div class="name">Academic</div><div class="badge">2</div></a></li>
                 
-                    <li><a class="flat-box" href="/categories/Computer/"><div class="name">Computer</div><div class="badge">6</div></a></li>
+                    <li><a class="flat-box" href="/categories/Algorithm/"><div class="name">Algorithm</div><div class="badge">3</div></a></li>
                 
-                    <li><a class="flat-box" href="/categories/Computer/Deep-Learning/"><div class="name">Deep Learning</div><div class="badge">1</div></a></li>
+                    <li><a class="flat-box" href="/categories/Machine-Learning/"><div class="name">Machine Learning</div><div class="badge">1</div></a></li>
                 
-                    <li><a class="flat-box" href="/categories/Computer/Foundation/"><div class="name">Foundation</div><div class="badge">1</div></a></li>
+                    <li><a class="flat-box" href="/categories/Miscellaneous/"><div class="name">Miscellaneous</div><div class="badge">1</div></a></li>
                 
-                    <li><a class="flat-box" href="/categories/Computer/Hardware/"><div class="name">Hardware</div><div class="badge">1</div></a></li>
+                    <li><a class="flat-box" href="/categories/Music/"><div class="name">Music</div><div class="badge">3</div></a></li>
                 
-                    <li><a class="flat-box" href="/categories/CS/IT/"><div class="name">IT</div><div class="badge">2</div></a></li>
-                
-                    <li><a class="flat-box" href="/categories/Lyric/Japanese/"><div class="name">Japanese</div><div class="badge">1</div></a></li>
-                
-                    <li><a class="flat-box" href="/categories/Song/Japanese/"><div class="name">Japanese</div><div class="badge">2</div></a></li>
-                
-                    <li><a class="flat-box" href="/categories/Lyric/"><div class="name">Lyric</div><div class="badge">1</div></a></li>
-                
-                    <li><a class="flat-box" href="/categories/Computer/Programming/"><div class="name">Programming</div><div class="badge">3</div></a></li>
-                
-                    <li><a class="flat-box" href="/categories/Song/"><div class="name">Song</div><div class="badge">2</div></a></li>
+                    <li><a class="flat-box" href="/categories/Server/"><div class="name">Server</div><div class="badge">2</div></a></li>
                 
             </ul>
         
@@ -1283,7 +705,7 @@
         <!-- <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div> -->
         <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Tags</div>
         <div class="content">
-            <a href="/tags/Fingerprint/" style="font-size: 14px; color: #999">Fingerprint</a> <a href="/tags/Fisher–Yates-shuffle/" style="font-size: 14px; color: #999">Fisher–Yates shuffle</a> <a href="/tags/Japanese/" style="font-size: 20.67px; color: #6c6c6c">Japanese</a> <a href="/tags/SCU/" style="font-size: 14px; color: #999">SCU</a> <a href="/tags/Santa-Clara-University/" style="font-size: 14px; color: #999">Santa Clara University</a> <a href="/tags/Windows-10/" style="font-size: 14px; color: #999">Windows 10</a> <a href="/tags/algorithm/" style="font-size: 14px; color: #999">algorithm</a> <a href="/tags/alphabet/" style="font-size: 17.33px; color: #828282">alphabet</a> <a href="/tags/django/" style="font-size: 14px; color: #999">django</a> <a href="/tags/python/" style="font-size: 24px; color: #555">python</a> <a href="/tags/save/" style="font-size: 14px; color: #999">save</a> <a href="/tags/server/" style="font-size: 17.33px; color: #828282">server</a>
+            <a href="/tags/Fingerprint/" style="font-size: 14px; color: #999">Fingerprint</a> <a href="/tags/Fisher–Yates-shuffle/" style="font-size: 14px; color: #999">Fisher–Yates shuffle</a> <a href="/tags/Japanese/" style="font-size: 20.67px; color: #6c6c6c">Japanese</a> <a href="/tags/SCU/" style="font-size: 14px; color: #999">SCU</a> <a href="/tags/Santa-Clara-University/" style="font-size: 14px; color: #999">Santa Clara University</a> <a href="/tags/Windows-10/" style="font-size: 14px; color: #999">Windows 10</a> <a href="/tags/algorithm/" style="font-size: 14px; color: #999">algorithm</a> <a href="/tags/alphabet/" style="font-size: 14px; color: #999">alphabet</a> <a href="/tags/django/" style="font-size: 14px; color: #999">django</a> <a href="/tags/python/" style="font-size: 24px; color: #555">python</a> <a href="/tags/save/" style="font-size: 14px; color: #999">save</a> <a href="/tags/server/" style="font-size: 17.33px; color: #828282">server</a>
         </div>
     </section>
 

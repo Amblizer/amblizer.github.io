@@ -145,7 +145,7 @@
             <article class="post reveal ">
     <section class="meta">
         <h2 class="title">
-            <a href="/2018/03/02/CS61A - Copy/">
+            <a href="/2018/03/02/CS61A/">
                 
                     CS61A 2018 Pathway
                 
@@ -157,230 +157,22 @@
         
     
     <div class="cats">
-        <a href="/categories/Computer/">Computer</a>, <a href="/categories/Computer/Foundation/">Foundation</a>
+        <a href="/categories/Academic/">Academic</a>
     </div>
 
 
     </section>
 
     <section class="article typo">
-        <script src="\assets\js\APlayer.min.js"> </script><h1 id="Amblizer’s-Pathway-of-CS-61A-2018"><a href="#Amblizer’s-Pathway-of-CS-61A-2018" class="headerlink" title="Amblizer’s Pathway of CS 61A 2018"></a>Amblizer’s Pathway of CS 61A 2018</h1><p>This is my learning path of CS 61A, you can check at <a href="https://github.com/Amblizer/CS-61A-Structure-and-Interpretation-of-Computer-Programs" target="_blank" rel="noopener"><em>my github repository</em></a> for slides.</p>
+        <p>This is my learning path of CS 61A, you can check at <a href="https://github.com/Amblizer/CS-61A-Structure-and-Interpretation-of-Computer-Programs" target="_blank" rel="noopener"><em>my github repository</em></a> for slides.</p>
 <p>ref: <a href="http://mitpress.mit.edu/sicp" target="_blank" rel="noopener">Structure and Interpretation of Computer Programs</a></p>
 <p>Spring 2018</p>
 <p>Instructor: John DeNero</p>
 <!-- links -->
-<h2 id="Pooling-Chart"><a href="#Pooling-Chart" class="headerlink" title="Pooling Chart"></a>Pooling Chart</h2><table>
-<thead>
-<tr>
-<th>Lecture</th>
-<th>Reading</th>
-<th>Note</th>
-<th>Handout</th>
-<th>Homework</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://www.youtube.com/watch?v=v5CP0zpYUcw&amp;list=PL6BsET-8jgYUV8Jxv0D7BLxbg-xIkh0vk&amp;vq=hd1080" target="_blank" rel="noopener">Functions</a></td>
-<td><a href="http://composingprograms.com/pages/11-getting-started.html" target="_blank" rel="noopener">1.1</a>, <a href="http://composingprograms.com/pages/12-elements-of-programming.html" target="_blank" rel="noopener">1.2</a></td>
-<td><a href="https://amblizer.xyz/2018/03/02/cs61a/#1-1-start">Note 1</a></td>
-<td><a href="https://github.com/Amblizer/CS-61A-Structure-and-Interpretation-of-Computer-Programs/tree/master/lab00/" target="_blank" rel="noopener">Lab 00: Introduction &amp; Workflow</a></td>
-</tr>
-<tr>
-<td><a href="https://www.youtube.com/watch?v=hdVG0P11G94&amp;list=PL6BsET-8jgYW16P20tNV8hwpBUiCyQB5c&amp;vq=hd1080" target="_blank" rel="noopener">Names</a></td>
-<td><a href="http://composingprograms.com/pages/13-defining-new-functions.html" target="_blank" rel="noopener">1.3</a>, <a href="http://composingprograms.com/pages/14-designing-functions.html" target="_blank" rel="noopener">1.4</a></td>
-<td><a href="https://amblizer.xyz/2018/03/02/cs61a/#1-3-define-functions">Note 2</a></td>
-<td><a href="https://github.com/Amblizer/CS-61A-Structure-and-Interpretation-of-Computer-Programs/tree/master/disc00/" target="_blank" rel="noopener">Disc 00: Lost on the Moon</a></td>
-<td><a href="https://github.com/Amblizer/CS-61A-Structure-and-Interpretation-of-Computer-Programs/tree/master/hw01/" target="_blank" rel="noopener">HW 01</a></td>
-</tr>
-</tbody>
-</table>
-<!-- links -->
-<!-- TOC -->
-<ul>
-<li><a href="#amblizers-pathway-of-cs-61a-2018">Amblizer’s Pathway of CS 61A 2018</a><ul>
-<li><a href="#pooling-chart">pooling chart</a></li>
-<li><a href="#suggested-accompany">suggested accompany</a></li>
-<li><a href="#1-1-start">1-1 start</a></li>
-<li><a href="#1-2-elements-of-programming">1-2 elements of programming</a></li>
-<li><a href="#1-3-define-functions">1-3 define functions</a></li>
-<li><a href="#1-4-designing-functions">1-4 designing functions</a></li>
-<li><a href="#1-5-control">1-5 control</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-
-<h2 id="suggested-accompany"><a href="#suggested-accompany" class="headerlink" title="suggested accompany"></a>suggested accompany</h2><ul>
-<li><a href="http://data8.org/" target="_blank" rel="noopener">Data8</a> for data science, of fundamentals of computing, statistical inference, &amp; machine learning applied to real-world data setsmachine learning, with ore statistics than computer science. A great programming practice for CS 61A</li>
-</ul>
-<h2 id="1-1-start"><a href="#1-1-start" class="headerlink" title="1-1 start"></a>1-1 start</h2><ol>
-<li><p>Priciples: beauty, simplicity and readability</p>
-</li>
-<li><p>Definitions:</p>
-<ul>
-<li>Statements: codes usually describe actions</li>
-<li>Expressions: codes do computations</li>
-<li>Functions: a box of series of statements and/or expressions</li>
-<li>Objects: data and its unalienable properties</li>
-<li><p>Interpreters: to evaluate compound expressions in a predictable way</p>
-<blockquote>
-<p>functions are objects, objects are functions, and interpreters are instances of both.</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>Expect errors:</p>
-<ul>
-<li>Debugging: know error itself and dignose it</li>
-<li><p>Priciples of debugging:</p>
-<ul>
-<li>Test incrementally, identify probles early and easily</li>
-<li>Isolate errors, localise according to output</li>
-<li>Check assumptions, make sure assumptions check with codes precisely</li>
-<li><p>Peer consulting, chart of valuable helpers</p>
-<p>  Name|Specialize<br>  —|—<br>  <a href="https://docs.python.org/3/index.html" target="_blank" rel="noopener">Official Py Documentation</a>|Everything</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>The fundamental equation of computers is:</p>
-<p>computer = powerful + stupid</p>
-<p>Programming is about a person using their real insight to build something that the computer can do.</p>
-<p>— Francisco Cai and Nick Parlante, Stanford CS101</p>
-</blockquote>
-<!-- links -->
-<h2 id="1-2-elements-of-programming"><a href="#1-2-elements-of-programming" class="headerlink" title="1-2 elements of programming"></a>1-2 elements of programming</h2><ol>
-<li><p>Aims programming serves:</p>
-<ul>
-<li>instruction to a computer</li>
-<li>a framework of ideas, which is mor important</li>
-</ul>
-</li>
-<li><p>Notice means to combine simple expresions and statement to complex combination and abstractions</p>
-</li>
-<li><p>Expression: operators and operands</p>
-<ul>
-<li>with infix notation, eg. 1/2 + (1/4 + 1/8 + 1/16) + 1/32 + 1/64 + 1/128</li>
-<li>with function notaton, eg. max(min(1, -2), min(pow(3, 5), -4)), and have <strong>THREE</strong> advantages over infix ones:<ul>
-<li>arbitary number of arguments</li>
-<li>nested expressions in a straightforward way</li>
-<li>easy to type, no limit to kinds</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Definitions:</p>
-<ul>
-<li>‘=’: assignment operator</li>
-<li>names: variable nams</li>
-<li>trees: grow from the top down</li>
-</ul>
-</li>
-<li><p>Pure and non-pure functions</p>
-<ul>
-<li><em>Pure function</em> have no side effects beyond return a value, call it for arbitary times with the same arguments must return same values.</li>
-<li><em>Non-pure function</em> have side effects</li>
-<li>Advantages of pure over non-pure:<ul>
-<li>more reliable to compose</li>
-<li>simpler to test</li>
-<li>essential for concurrent programs</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p><em>The Zen of Python</em> by Tim Peters</p>
-<p>Beautiful is better than ugly.<br>Explicit is better than implicit.<br>Simple is better than complex.<br>Complex is better than complicated.<br>Flat is better than nested.<br>Sparse is better than dense.<br>Readability counts.<br>Special cases aren’t special enough to break the rules.<br>Although practicality beats purity.<br>Errors should never pass silently.<br>Unless explicitly silenced.<br>In the face of ambiguity, refuse the temptation to guess.<br>There should be one– and preferably only one –obvious way to &gt;do it.<br>Although that way may not be obvious at first unless you’re &gt;Dutch.<br>Now is better than never.<br>Although never is often better than <em>right</em> now.<br>If the implementation is hard to explain, it’s a bad idea.<br>If the implementation is easy to explain, it may be a good &gt;idea.<br>Namespaces are one honking great idea – let’s do more of those!</p>
-</blockquote>
-<h2 id="1-3-define-functions"><a href="#1-3-define-functions" class="headerlink" title="1-3 define functions"></a>1-3 define functions</h2><ol>
-<li><p>A function have signature and body</p>
-<ul>
-<li>Singature have all variebles needed</li>
-<li>body indict expressions and statements</li>
-</ul>
-</li>
-<li><p>Names of variebles remain local within function bodies</p>
-</li>
-<li><p>Choosing names: essential to the interpretability, and usually follow simple rules:</p>
-<ul>
-<li>lowercase, words separated by underscores, good to be descriptive</li>
-<li>parameter names should be lowercase, in single word, and meaningful</li>
-</ul>
-</li>
-<li><p>A helper function can be write at a a later time in the function</p>
-</li>
-<li><p>Functional abstracion:</p>
-<ul>
-<li>Domain:</li>
-<li>Range:</li>
-<li>Intention:</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>A programmer should not need to know how the function is implemented in order to use it</p>
-</blockquote>
-<h2 id="1-4-designing-functions"><a href="#1-4-designing-functions" class="headerlink" title="1-4 designing functions"></a>1-4 designing functions</h2><ol>
-<li><p>Functions are abstractions:</p>
-<ul>
-<li>Single job for each function, with a shortname and a short description</li>
-<li>Don’t repeat, abstract</li>
-<li>Generally defined, considering broader usage.</li>
-</ul>
-</li>
-<li><p>Use docstring, triple quoted:</p>
-<ul>
-<li>First line: job of the function</li>
-<li>Following lines: argument and behavior</li>
-<li>Use <em>help(function)</em> to see the docstring</li>
-<li>Write docstrings for all functions necessary</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>Code is written only once, but often read many times.</p>
-</blockquote>
-<ol>
-<li><p>Comments: attached following the # symbol, fr humans alone</p>
-</li>
-<li><p>Values should be assigned defauts in most cases.</p>
-</li>
-</ol>
-<h2 id="1-5-control"><a href="#1-5-control" class="headerlink" title="1-5 control"></a>1-5 control</h2><ol>
-<li>Definitions<ul>
-<li>Statement: to change thethe interpreter state</li>
-<li>Clause: a header and an indented suit of statemtns, and a suite is controlled by a header</li>
-<li>Compound Statement: consists of arbitary number of clauses</li>
-<li>Execution rule: excuted in order, end by redirection to  control</li>
-<li>Modular Programs: where pure functions interact only via the values they take and return.</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p>To execute a sequence of statements, execute the first statement. If that statement does not redirect control, then proceed to execute the rest of the sequence of statements, if any remain.</p>
-</blockquote>
-<ol>
-<li><p>Local Assignment: bind a name to a value within the local frame</p>
-</li>
-<li><p>Conditional statements: conditional statements, bool contexts, bool values</p>
-</li>
-<li><p>Iteration</p>
-</li>
-<li><p>Testing</p>
-<ul>
-<li>Assert statments: followed by a bool expression, and a text for <em>FALSE</em>, proceeded to next only when expectation is met.</li>
-<li>Doctests: seperate by a blank line from the description</li>
-<li>Unit Test: test that applies a single function, should be exhaustive.</li>
-<li>Key: test immediately after implementing</li>
-</ul>
-</li>
-</ol>
-
+        
+            <div class="readmore">
+                <a href="/2018/03/02/CS61A/" class="flat-box">READ MORE</a>
+            </div>
         
 
         
@@ -446,27 +238,17 @@
         
             <ul class="entry">
                 
-                    <li><a class="flat-box" href="/categories/CS/"><div class="name">CS</div><div class="badge">2</div></a></li>
+                    <li><a class="flat-box" href="/categories/Academic/"><div class="name">Academic</div><div class="badge">2</div></a></li>
                 
-                    <li><a class="flat-box" href="/categories/Computer/"><div class="name">Computer</div><div class="badge">6</div></a></li>
+                    <li><a class="flat-box" href="/categories/Algorithm/"><div class="name">Algorithm</div><div class="badge">3</div></a></li>
                 
-                    <li><a class="flat-box" href="/categories/Computer/Deep-Learning/"><div class="name">Deep Learning</div><div class="badge">1</div></a></li>
+                    <li><a class="flat-box" href="/categories/Machine-Learning/"><div class="name">Machine Learning</div><div class="badge">1</div></a></li>
                 
-                    <li><a class="flat-box" href="/categories/Computer/Foundation/"><div class="name">Foundation</div><div class="badge">1</div></a></li>
+                    <li><a class="flat-box" href="/categories/Miscellaneous/"><div class="name">Miscellaneous</div><div class="badge">1</div></a></li>
                 
-                    <li><a class="flat-box" href="/categories/Computer/Hardware/"><div class="name">Hardware</div><div class="badge">1</div></a></li>
+                    <li><a class="flat-box" href="/categories/Music/"><div class="name">Music</div><div class="badge">3</div></a></li>
                 
-                    <li><a class="flat-box" href="/categories/CS/IT/"><div class="name">IT</div><div class="badge">2</div></a></li>
-                
-                    <li><a class="flat-box" href="/categories/Lyric/Japanese/"><div class="name">Japanese</div><div class="badge">1</div></a></li>
-                
-                    <li><a class="flat-box" href="/categories/Song/Japanese/"><div class="name">Japanese</div><div class="badge">2</div></a></li>
-                
-                    <li><a class="flat-box" href="/categories/Lyric/"><div class="name">Lyric</div><div class="badge">1</div></a></li>
-                
-                    <li><a class="flat-box" href="/categories/Computer/Programming/"><div class="name">Programming</div><div class="badge">3</div></a></li>
-                
-                    <li><a class="flat-box" href="/categories/Song/"><div class="name">Song</div><div class="badge">2</div></a></li>
+                    <li><a class="flat-box" href="/categories/Server/"><div class="name">Server</div><div class="badge">2</div></a></li>
                 
             </ul>
         
@@ -509,7 +291,7 @@
         <!-- <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div> -->
         <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Tags</div>
         <div class="content">
-            <a href="/tags/Fingerprint/" style="font-size: 14px; color: #999">Fingerprint</a> <a href="/tags/Fisher–Yates-shuffle/" style="font-size: 14px; color: #999">Fisher–Yates shuffle</a> <a href="/tags/Japanese/" style="font-size: 20.67px; color: #6c6c6c">Japanese</a> <a href="/tags/SCU/" style="font-size: 14px; color: #999">SCU</a> <a href="/tags/Santa-Clara-University/" style="font-size: 14px; color: #999">Santa Clara University</a> <a href="/tags/Windows-10/" style="font-size: 14px; color: #999">Windows 10</a> <a href="/tags/algorithm/" style="font-size: 14px; color: #999">algorithm</a> <a href="/tags/alphabet/" style="font-size: 17.33px; color: #828282">alphabet</a> <a href="/tags/django/" style="font-size: 14px; color: #999">django</a> <a href="/tags/python/" style="font-size: 24px; color: #555">python</a> <a href="/tags/save/" style="font-size: 14px; color: #999">save</a> <a href="/tags/server/" style="font-size: 17.33px; color: #828282">server</a>
+            <a href="/tags/Fingerprint/" style="font-size: 14px; color: #999">Fingerprint</a> <a href="/tags/Fisher–Yates-shuffle/" style="font-size: 14px; color: #999">Fisher–Yates shuffle</a> <a href="/tags/Japanese/" style="font-size: 20.67px; color: #6c6c6c">Japanese</a> <a href="/tags/SCU/" style="font-size: 14px; color: #999">SCU</a> <a href="/tags/Santa-Clara-University/" style="font-size: 14px; color: #999">Santa Clara University</a> <a href="/tags/Windows-10/" style="font-size: 14px; color: #999">Windows 10</a> <a href="/tags/algorithm/" style="font-size: 14px; color: #999">algorithm</a> <a href="/tags/alphabet/" style="font-size: 14px; color: #999">alphabet</a> <a href="/tags/django/" style="font-size: 14px; color: #999">django</a> <a href="/tags/python/" style="font-size: 24px; color: #555">python</a> <a href="/tags/save/" style="font-size: 14px; color: #999">save</a> <a href="/tags/server/" style="font-size: 17.33px; color: #828282">server</a>
         </div>
     </section>
 
