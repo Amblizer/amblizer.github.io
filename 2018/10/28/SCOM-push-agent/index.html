@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>SCOM - Push Agent | Amblizer&#39;s Mainframe</title>
+  <title>SCOM - Agent and Management Packs | Amblizer&#39;s Mainframe</title>
   <meta name="HandheldFriendly" content="True">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="shortcut icon" href="/imgs/favicon.png">
@@ -135,7 +135,7 @@
     <section class="meta">
         <h1 class="title">
             
-                SCOM - Push Agent
+                SCOM - Agent and Management Packs
             
         </h1>
         <time>
@@ -154,11 +154,29 @@
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
-            <script src="\assets\js\APlayer.min.js"> </script><p>Step 1: Log on to SCOM as an Administrators role, and open <strong>Discovery Wizard</strong> at the left bottom of Administrator panel.</p>
+            <script src="\assets\js\APlayer.min.js"> </script><p>Procedures notes on deployment of SCOM agents and MPs.</p>
+<h2 id="Push-Agent"><a href="#Push-Agent" class="headerlink" title="Push Agent"></a>Push Agent</h2><p>Pushing steps are primarily base on default setting.</p>
+<ol>
+<li>Log on to SCOM as an Administrators role, and open <strong>Discovery Wizard</strong> at the left bottom of Administrator panel.</li>
+</ol>
 <img src="/2018/10/28/SCOM-push-agent/scom-1.png">
 <a id="more"></a>
-<p>Step 2: Choose <strong>Windows computers</strong>.</p>
+<ol>
+<li>Choose <strong>Windows computers</strong>.</li>
+</ol>
 <img src="/2018/10/28/SCOM-push-agent/scom-2.png">
+<ol>
+<li><p>Select <strong>Advanced discovery</strong> for specific search. Choose <strong>Servers and Clients</strong>, make sure <strong>Verify discovered computers can be contacted</strong> is checked.</p>
+</li>
+<li><p>Make sure the account have administrative privileges.</p>
+</li>
+<li><p>Check the clients you want to manage.</p>
+</li>
+<li><p>Click <strong>Finish</strong>, and the agent status can be seen in the dialog box</p>
+</li>
+</ol>
+<h2 id="Import-Management-Packs"><a href="#Import-Management-Packs" class="headerlink" title="Import Management Packs"></a>Import Management Packs</h2><p>Choose <strong>Updates and Recommendations</strong> in Administrator panel, then click <strong>Get ALL MPs</strong> at the right.</p>
+<img src="/2018/10/28/SCOM-push-agent/scom-.png">
 <p>(Ref: <a href="https://docs.microsoft.com/en-us/system-center/scom/manage-deploy-windows-agent-console?view=sc-om-1807" target="_blank" rel="noopener">M$ SCOM Documents</a>)</p>
 <!-- link -->
 
@@ -263,7 +281,7 @@
 
 <script>
     window.subData = {
-        title: 'SCOM - Push Agent',
+        title: 'SCOM - Agent and Management Packs',
         tools: true
     }
 </script>
@@ -376,6 +394,14 @@
     
     
         
+    <section class="m_widget toc-wrapper">
+        <!-- <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div> -->
+        <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Table of Contents</div>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Push-Agent"><span class="toc-text">Push Agent</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Import-Management-Packs"><span class="toc-text">Import Management Packs</span></a></li></ol>
+        </div>
+    </section>
+
 
     
 

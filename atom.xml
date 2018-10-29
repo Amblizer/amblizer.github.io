@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://amblizer.xyz/"/>
-  <updated>2018-10-29T17:41:48.762Z</updated>
+  <updated>2018-10-29T18:51:48.405Z</updated>
   <id>http://amblizer.xyz/</id>
   
   <author>
@@ -17,17 +17,21 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>SCOM - Push Agent</title>
+    <title>SCOM - Agent and Management Packs</title>
     <link href="http://amblizer.xyz/2018/10/28/SCOM-push-agent/"/>
     <id>http://amblizer.xyz/2018/10/28/SCOM-push-agent/</id>
     <published>2018-10-28T16:00:00.000Z</published>
-    <updated>2018-10-29T17:41:48.762Z</updated>
+    <updated>2018-10-29T18:51:48.405Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>Step 1: Log on to SCOM as an Administrators role, and open <strong>Discovery Wizard</strong> at the left bottom of Administrator panel.</p><img src="/2018/10/28/SCOM-push-agent/scom-1.png"><a id="more"></a><p>Step 2: Choose <strong>Windows computers</strong>.</p><img src="/2018/10/28/SCOM-push-agent/scom-2.png"><p>(Ref: <a href="https://docs.microsoft.com/en-us/system-center/scom/manage-deploy-windows-agent-console?view=sc-om-1807" target="_blank" rel="noopener">M$ SCOM Documents</a>)</p><!-- link -->]]></content>
+    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>Procedures notes on deployment of SCOM agents and MPs.</p><h2 id="Push-Agent"><a href="#Push-Agent" class="headerlink" title="Push Agent"></a>Push Agent</h2><p>Pushing steps are primarily base on default setting.</p><ol><li>Log on to SCOM as an Administrators role, and open <strong>Discovery Wizard</strong> at the left bottom of Administrator panel.</li></ol><img src="/2018/10/28/SCOM-push-agent/scom-1.png"><a id="more"></a><ol><li>Choose <strong>Windows computers</strong>.</li></ol><img src="/2018/10/28/SCOM-push-agent/scom-2.png"><ol><li><p>Select <strong>Advanced discovery</strong> for specific search. Choose <strong>Servers and Clients</strong>, make sure <strong>Verify discovered computers can be contacted</strong> is checked.</p></li><li><p>Make sure the account have administrative privileges.</p></li><li><p>Check the clients you want to manage.</p></li><li><p>Click <strong>Finish</strong>, and the agent status can be seen in the dialog box</p></li></ol><h2 id="Import-Management-Packs"><a href="#Import-Management-Packs" class="headerlink" title="Import Management Packs"></a>Import Management Packs</h2><p>Choose <strong>Updates and Recommendations</strong> in Administrator panel, then click <strong>Get ALL MPs</strong> at the right.</p><img src="/2018/10/28/SCOM-push-agent/scom-.png"><p>(Ref: <a href="https://docs.microsoft.com/en-us/system-center/scom/manage-deploy-windows-agent-console?view=sc-om-1807" target="_blank" rel="noopener">M$ SCOM Documents</a>)</p><!-- link -->]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Step 1: Log on to SCOM as an Administrators role, and open &lt;strong&gt;Discovery Wizard&lt;/strong&gt; at the left bottom of Administrator panel.&lt;/p&gt;
+      &lt;p&gt;Procedures notes on deployment of SCOM agents and MPs.&lt;/p&gt;
+&lt;h2 id=&quot;Push-Agent&quot;&gt;&lt;a href=&quot;#Push-Agent&quot; class=&quot;headerlink&quot; title=&quot;Push Agent&quot;&gt;&lt;/a&gt;Push Agent&lt;/h2&gt;&lt;p&gt;Pushing steps are primarily base on default setting.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Log on to SCOM as an Administrators role, and open &lt;strong&gt;Discovery Wizard&lt;/strong&gt; at the left bottom of Administrator panel.&lt;/li&gt;
+&lt;/ol&gt;
 &lt;img src=&quot;/2018/10/28/SCOM-push-agent/scom-1.png&quot;&gt;
     
     </summary>
