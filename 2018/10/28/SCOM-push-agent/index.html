@@ -157,15 +157,13 @@
             <script src="\assets\js\APlayer.min.js"> </script><p>Procedures notes on deployment of SCOM agents and MPs.</p>
 <h2 id="Push-Agent"><a href="#Push-Agent" class="headerlink" title="Push Agent"></a>Push Agent</h2><p>Pushing steps are primarily base on default setting.</p>
 <ol>
-<li>Log on to SCOM as an Administrators role, and open <strong>Discovery Wizard</strong> at the left bottom of Administrator panel.</li>
-</ol>
+<li><p>Log on to SCOM as an Administrators role, and open <strong>Discovery Wizard</strong> at the left bottom of Administrator panel.</p>
 <img src="/2018/10/28/SCOM-push-agent/scom-1.png">
 <a id="more"></a>
-<ol>
-<li>Choose <strong>Windows computers</strong>.</li>
-</ol>
+</li>
+<li><p>Choose <strong>Windows computers</strong>.</p>
 <img src="/2018/10/28/SCOM-push-agent/scom-2.png">
-<ol>
+</li>
 <li><p>Select <strong>Advanced discovery</strong> for specific search. Choose <strong>Servers and Clients</strong>, make sure <strong>Verify discovered computers can be contacted</strong> is checked.</p>
 </li>
 <li><p>Make sure the account have administrative privileges.</p>
@@ -175,8 +173,13 @@
 <li><p>Click <strong>Finish</strong>, and the agent status can be seen in the dialog box</p>
 </li>
 </ol>
-<h2 id="Import-Management-Packs"><a href="#Import-Management-Packs" class="headerlink" title="Import Management Packs"></a>Import Management Packs</h2><p>Choose <strong>Updates and Recommendations</strong> in Administrator panel, then click <strong>Get ALL MPs</strong> at the right.</p>
+<h2 id="Import-Management-Packs"><a href="#Import-Management-Packs" class="headerlink" title="Import Management Packs"></a>Import Management Packs</h2><ol>
+<li><p>Choose <strong>Updates and Recommendations</strong> in Administrator panel, then click <strong>Get ALL MPs</strong> at the right.</p>
 <img src="/2018/10/28/SCOM-push-agent/scom-.png">
+</li>
+<li><p>If there’s any component still not monitored, do last step again.</p>
+</li>
+</ol>
 <p>(Ref: <a href="https://docs.microsoft.com/en-us/system-center/scom/manage-deploy-windows-agent-console?view=sc-om-1807" target="_blank" rel="noopener">M$ SCOM Documents</a>)</p>
 <!-- link -->
 
