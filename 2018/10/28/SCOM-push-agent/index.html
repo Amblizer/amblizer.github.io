@@ -156,20 +156,25 @@
         <div class="article-entry" itemprop="articleBody">
             <script src="\assets\js\APlayer.min.js"> </script><p>Procedures notes on deployment of SCOM agents and MPs.</p>
 <h2 id="Push-Agent"><a href="#Push-Agent" class="headerlink" title="Push Agent"></a>Push Agent</h2><p>Pushing steps are primarily base on default setting.</p>
-<ol>
-<li>Log on to SCOM as an Administrators role, and open <strong>Discovery Wizard</strong> at the left bottom of Administrator panel.<img src="/2018/10/28/SCOM-push-agent/scom-1.png">
-</li>
-</ol>
 <a id="more"></a>
 <ol>
+<li><p>Log on to SCOM as an Administrators role, and open <strong>Discovery Wizard</strong> at the left bottom of Administrator panel.</p>
+<img src="/2018/10/28/SCOM-push-agent/scom-1.png">
+</li>
 <li><p>Choose <strong>Windows computers</strong>.</p>
 <img src="/2018/10/28/SCOM-push-agent/scom-2.png">
 </li>
 <li><p>Select <strong>Advanced discovery</strong> for specific search. Choose <strong>Servers and Clients</strong>, make sure <strong>Verify discovered computers can be contacted</strong> is checked.</p>
+<img src="/2018/10/28/SCOM-push-agent/scom-3.png">
+</li>
+<li><p>Select proper discovery method, I actually chose <strong>Scan Active Directory</strong>.</p>
+<img src="/2018/10/28/SCOM-push-agent/scom-4.png">
 </li>
 <li><p>Make sure the account have administrative privileges.</p>
+<img src="/2018/10/28/SCOM-push-agent/scom-5.png">
 </li>
 <li><p>Check the clients you want to manage.</p>
+<img src="/2018/10/28/SCOM-push-agent/scom-6.png">
 </li>
 <li><p>Click <strong>Finish</strong>, and the agent status can be seen in the dialog box</p>
 </li>
@@ -181,7 +186,7 @@
 <li><p>If there’s any component still not monitored, do last step again.</p>
 </li>
 </ol>
-<p>(Ref: <a href="https://docs.microsoft.com/en-us/system-center/scom/manage-deploy-windows-agent-console?view=sc-om-1807" target="_blank" rel="noopener">M$ SCOM Documents</a>)</p>
+<p>(Ref: <a href="https://docs.microsoft.com/en-us/system-center/scom/manage-deploy-windows-agent-console?view=sc-om-1807" target="_blank" rel="noopener">M$ SCOM Documents</a>, <a href="https://mytechguideblog.wordpress.com/2015/11/13/scom-agent-installation-discovery-method/" target="_blank" rel="noopener">SCOM Agent Installation – Discovery Method</a>)</p>
 <!-- link -->
 
         </div>
