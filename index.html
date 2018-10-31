@@ -140,6 +140,44 @@
             <article class="post reveal ">
     <section class="meta">
         <h2 class="title">
+            <a href="/2018/10/31/Data-Structure-in-Python/">
+                
+                    Data Structure in Python (Updating)
+                
+            </a>
+        </h2>
+        <time>
+            <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;2018-10-31
+        </time>
+        
+    
+    <div class="cats">
+        
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
+        <script src="\assets\js\APlayer.min.js"> </script><h2 id="Linked-List"><a href="#Linked-List" class="headerlink" title="Linked List"></a>Linked List</h2><p>A linked list is a node-within-node hierarchical structure, and it is not a built-in data structure in python.</p>
+<h3 id="Unit-node"><a href="#Unit-node" class="headerlink" title="Unit: node"></a>Unit: node</h3><p>Node is a unit within a linked list, and it consists of two parts - value, and the next node, as shown below.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="string">"""each node</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, val=None)</span>:</span></span><br><span class="line">        self.val  = val</span><br><span class="line">        self.next = <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<p>And we can traversal all nodes in a linked list:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">linkedList</span>:</span></span><br><span class="line">    <span class="string">"""Hierarch structure of linked list </span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.head = <span class="keyword">None</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">traversal</span><span class="params">(self)</span>:</span></span><br><span class="line">        current = self.head</span><br><span class="line">        <span class="keyword">while</span> current != <span class="keyword">None</span>:</span><br><span class="line">            print(current.val)</span><br><span class="line">            current = current.next</span><br></pre></td></tr></table></figure>
+<h3 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h3><p>Typically, a linked list have three kind of methods.</p>
+<h4 id="Add"><a href="#Add" class="headerlink" title="Add"></a>Add</h4>
+        
+
+        
+    </section>
+</article>
+
+        </div>
+    
+        <div class="post-wrapper">
+            <article class="post reveal ">
+    <section class="meta">
+        <h2 class="title">
             <a href="/2018/10/28/SCOM-push-agent/">
                 
                     SCOM - Agent and Management Packs
@@ -542,51 +580,6 @@
                     <a href="/tags/python/"><i class="fa fa-tag fa-fw"></i>&nbsp;python</a>
                 
                     <a href="/tags/save/"><i class="fa fa-tag fa-fw"></i>&nbsp;save</a>
-                
-            </div>
-        
-    </p></section>
-</article>
-
-        </div>
-    
-        <div class="post-wrapper">
-            <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2017/06/01/Win10-Cuda-TF/">
-                
-                    Install Cuda 8/CuDNN 6, Tensorflow and Keras on Windows 10
-                
-            </a>
-        </h2>
-        <time>
-            <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;2017-06-01
-        </time>
-        
-    
-    <div class="cats">
-        <a href="/categories/Machine-Learning/">Machine Learning</a>
-    </div>
-
-
-    </section>
-
-    <section class="article typo">
-        <p>[Windows 10 安装 Cuda 8 + CuDNN 6, Tensorflow 和 keras，附CPU/GPU切换小技巧]</p>
-<p>Updated: Dec 29, 2017</p>
-<p>Originally published on <a href="http://amblizer.xyz/2017/06/01/Windows-10-Cuda-Tensorflow-Keras/">Amblizer.xyz</a>, reblogged in case of blocking</p>
-<p>I’ve tried months ago to install the GPU-based Machine learning framework, namely keras with tensorflow, but get stuck following the official indication of the latter, and the issue remained unresolved until yesterday because of loads of patients in summer vocation, and I finally managed to get m1000m working.<br>
-        
-            <div class="readmore">
-                <a href="/2017/06/01/Win10-Cuda-TF/" class="flat-box">READ MORE</a>
-            </div>
-        
-
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/python/"><i class="fa fa-tag fa-fw"></i>&nbsp;python</a>
                 
             </div>
         
