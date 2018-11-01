@@ -73,13 +73,15 @@
       
         <tags>
             
-            <tag> algorithm </tag>
-            
             <tag> python </tag>
+            
+            <tag> algorithm </tag>
             
             <tag> data struction </tag>
             
             <tag> linked list </tag>
+            
+            <tag> node </tag>
             
         </tags>
       
@@ -313,9 +315,9 @@
       
         <tags>
             
-            <tag> python </tag>
-            
             <tag> alphabet </tag>
+            
+            <tag> python </tag>
             
         </tags>
       
@@ -338,11 +340,11 @@
       
         <tags>
             
+            <tag> python </tag>
+            
             <tag> Fisher–Yates shuffle </tag>
             
             <tag> algorithm </tag>
-            
-            <tag> python </tag>
             
         </tags>
       
