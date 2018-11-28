@@ -197,7 +197,7 @@
 </li>
 <li><p>Backup the OM databases (If not backup regularly)</p>
 </li>
-<li><p>Stop Operations Manager services</p>
+<li><p>Stop Operations Manager website in IIS</p>
 </li>
 <li><p>Increase agent HealthService cache size</p>
 <ul>
@@ -207,12 +207,30 @@
 </ul>
 </li>
 </ol>
-<h2 id="Upgrade"><a href="#Upgrade" class="headerlink" title="Upgrade"></a>Upgrade</h2><h2 id="Post-Upgrade"><a href="#Post-Upgrade" class="headerlink" title="Post-Upgrade"></a>Post-Upgrade</h2><ol>
+<h2 id="Upgrade"><a href="#Upgrade" class="headerlink" title="Upgrade"></a>Upgrade</h2><ol>
+<li>Log on to the server as an Operations Manager Administrators role.</li>
+<li>Run Setup.exe, click <strong>Install</strong>.</li>
+<li>Select install location.</li>
+<li>Review prerequisites, and click <strong>Verify prerequisites again</strong> to recheck.</li>
+<li><p>Configure accounts.</p>
+<blockquote>
+<p>If you receive a message about using the wrong version of SQL Server, or experience a problem with the SQL Server Windows Management Instrumentation (WMI) provider, you can resolve this. Open a Command Prompt window by using the Run as administrator option. Then run the following command, replace the <path> placeholder with the location of Microsoft SQL Server: </path></p>
+<p>mofcomp.exe <path>\Microsoft SQL Server\100\Shared\sqlmgmproviderxpsp2up.mof</path></p>
+</blockquote>
+</li>
+<li><p>Review the upgrade summary, then click <strong>Upgrade</strong> if everything satisfies you.</p>
+</li>
+</ol>
+<h2 id="Post-Upgrade"><a href="#Post-Upgrade" class="headerlink" title="Post-Upgrade"></a>Post-Upgrade</h2><ol>
 <li><p>Re-enable the Notification Subscriptions</p>
 </li>
 <li><p>Reset agent HealthService Cache size</p>
 </li>
 <li><p>Verify the upgrade was successful</p>
+<ul>
+<li>In Operations console, open Administrator panel.</li>
+<li>Under Device Management, click Management Servers. In the results pane, you should see the management server that you just installed with a green check mark in the Health State column.</li>
+</ul>
 </li>
 </ol>
 <h2 id="Next-Step"><a href="#Next-Step" class="headerlink" title="Next Step"></a>Next Step</h2><ol>
@@ -236,9 +254,9 @@
             </div>
         
         <section class="meta">
-          <time itemprop="dateUpdated" datetime="2018-11-01T00:17:42-07:00" content="2018-11-01">
+          <time itemprop="dateUpdated" datetime="2018-11-28T09:38:17-08:00" content="2018-11-28">
             <i class="fa fa-pencil-square fa-fw" aria-hidden="true"></i>
-            本文最后更新于：2018-11-01
+            本文最后更新于：2018-11-28
           </time>
         </section>
 
@@ -258,9 +276,9 @@
                             
                                 <h6 class="tags">
                                     
-                                        <i class="fa fa-tag fa-fw"></i>algorithm
-                                    
                                         <i class="fa fa-tag fa-fw"></i>python
+                                    
+                                        <i class="fa fa-tag fa-fw"></i>algorithm
                                     
                                         <i class="fa fa-tag fa-fw"></i>data struction
                                     
