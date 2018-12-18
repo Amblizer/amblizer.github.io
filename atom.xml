@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://amblizer.xyz/"/>
-  <updated>2018-11-01T07:18:09.308Z</updated>
+  <updated>2018-12-18T07:25:57.844Z</updated>
   <id>http://amblizer.xyz/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>硅谷转码神校 Santa Clara University - 学业篇</title>
+    <link href="http://amblizer.xyz/2018/12/17/scu-coursework/"/>
+    <id>http://amblizer.xyz/2018/12/17/scu-coursework/</id>
+    <published>2018-12-18T07:17:22.000Z</published>
+    <updated>2018-12-18T07:25:57.844Z</updated>
+    
+    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>之前答应向我强烈推荐 SCU 的学长写写自己的感受，一直忙着课业、刷题没能找到时间下笔（键盘）。转眼已是寒假，这些天会断断续续写些在 SCU 的所见所闻，不尽之处还请提问。</p><a id="more"></a><p>SCU 大名 Santa Clara University， 与她结缘纯属意外，直到去年年底大部分申请都投完才得知她的存在。当时除了澳洲学校给了几个录取，陆续收到了美国学校的拒信，本以为美帝求学之路已经结束，未成想 SCU 的申请两周便有回复，寄送成绩后隔天就给了录取。Admission 给的回复时限很短，在澳洲几所排名奇高的学校和SCU之间犹豫了一阵还是决定选择自己的 dream land。到目前为止，自己都很庆幸当时没有对排名看得过重。</p><p>SCU 的Computer Science Engineering专业选课的自由度较大，官网上按照特定 track 选课的要求实际上已经作废。院长在开会时说因为希望学生能尽可能广泛的接触 CS 的各个领域，而不是一股脑都去做了 Data Science. 对于跨专业基础缺乏者，比如楼主，学院会要求补修基础课，因为其中有不计入研究生学分的课程，所以学费较无需补课者为高。</p><p>楼主之前在国内某自视甚高 top20 就读多年，课程中常昏昏欲睡，故之前并未对此“名不见经传”大学有很高期待。尤其考虑专业差距之远，自己对 CS 相关课程毫无基础，甫一开学就是离散、数电和算法三门必修/基础课程，再加上选修的信安管理，更是忐忑不安。一星期过去，悬着的心下来大半：三门主课老师讲授详尽、思路清晰，老师似乎清楚部分学生没有相关专业基础，对许多简单到“笨”的问题也答无不尽（楼主就提了很多）。与国内一些老师不同，看得出来这几位老师都很喜欢讲课，享受在课堂传递知识的乐趣，而非当作是不得不完成的任务。讲解的语言也尽可能平实，并非为了炫耀自己的能力。能感受到老师们关心的事情是让每一个想学会的人都掌握。</p><img src="/2018/12/17/scu-coursework/math.jpg"><p>(离散课老师)<br><br><br><img src="/2018/12/17/scu-coursework/algorithm.jpg"><br>(算法课老师)<br><br><br>因为是湾区的学校，所以老师中很大比例都是亚裔，语速也较平缓。当然也有例外，比如数电老师语速常常狂飙，人称 rap-god（媲美高潮部分的语速）。关于语言，以后会单开一帖。</p><p>作为 quarter 制学校，SCU 的教学季节奏很快，一转眼第一学期已经正式结束。老师很 nice，难度大的课程有 curve，成绩还比较满意。不过课业上关注多也不是没有代价——楼主到还没申到19fall的暑期实习，leetcode题目只过了不到100道，寒假的任务就很重了。今天先写到这里，求小伙伴内推DS、ML相关职位，找到实习就有更多时间给大家介绍SCU了。</p><p>最后，用SCU的“宝马”做个结尾：</p><img src="/2018/12/17/scu-coursework/bucky.jpg">]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之前答应向我强烈推荐 SCU 的学长写写自己的感受，一直忙着课业、刷题没能找到时间下笔（键盘）。转眼已是寒假，这些天会断断续续写些在 SCU 的所见所闻，不尽之处还请提问。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="life" scheme="http://amblizer.xyz/categories/life/"/>
+    
+    
+      <category term="SCU" scheme="http://amblizer.xyz/tags/SCU/"/>
+    
+      <category term="Santa Clara Univeristy" scheme="http://amblizer.xyz/tags/Santa-Clara-Univeristy/"/>
+    
+      <category term="Bay Area" scheme="http://amblizer.xyz/tags/Bay-Area/"/>
+    
+  </entry>
   
   <entry>
     <title>SCOM - Agent and Management Packs</title>
@@ -48,9 +74,9 @@
     <link href="http://amblizer.xyz/2018/11/01/SCOM-installation/"/>
     <id>http://amblizer.xyz/2018/11/01/SCOM-installation/</id>
     <published>2018-11-01T07:21:02.000Z</published>
-    <updated>2018-11-01T19:11:37.996Z</updated>
+    <updated>2018-12-11T18:34:13.821Z</updated>
     
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h2 id="SCOM-Reporting"><a href="#SCOM-Reporting" class="headerlink" title="SCOM Reporting"></a>SCOM Reporting</h2><h3 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite"></a>Prerequisite</h3><p>SSRS: SQL Server Reporting service</p><h4 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h4><p>After installation, 4 configurations should be performed in Reporting service Configuration Manager.</p><ol><li><p>Service Account</p></li><li><p>Web Service/URL</p></li><li><p>Report Manager URL</p></li><li><p>Database</p></li></ol><p>Usually it is OK with default values, click ‘Apply’. Then go back to <strong>Report Manager URL</strong> section, and click the URL to test, Seeing the home page means it is ready to install System Center Reporting Server.</p>]]></content>
+    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><h2 id="SCOM-Reporting"><a href="#SCOM-Reporting" class="headerlink" title="SCOM Reporting"></a>SCOM Reporting</h2><h3 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite"></a>Prerequisite</h3><p>SSRS: SQL Server Reporting service</p><h4 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h4><p>After installation, 4 configurations should be performed in Reporting service Configuration Manager.</p><ol><li><p>Service Account</p></li><li><p>Web Service/URL</p></li><li><p>Report Manager URL</p></li><li><p>Database</p></li></ol><p>Usually it is OK with default values, click ‘Apply’. Then go back to <strong>Report Manager URL</strong> section, and click the URL to test, Seeing the home page means it is ready to install System Center Reporting Server.</p><h4 id="Firewall"><a href="#Firewall" class="headerlink" title="Firewall"></a>Firewall</h4><p>Open <code>wf.msc</code>, add an inbound rule, port, TCP, default port is 1433</p>]]></content>
     
     <summary type="html">
     
@@ -105,9 +131,9 @@
       <category term="Algorithm" scheme="http://amblizer.xyz/categories/Algorithm/"/>
     
     
-      <category term="python" scheme="http://amblizer.xyz/tags/python/"/>
-    
       <category term="algorithm" scheme="http://amblizer.xyz/tags/algorithm/"/>
+    
+      <category term="python" scheme="http://amblizer.xyz/tags/python/"/>
     
       <category term="data struction" scheme="http://amblizer.xyz/tags/data-struction/"/>
     
@@ -365,9 +391,9 @@
       <category term="Algorithm" scheme="http://amblizer.xyz/categories/Algorithm/"/>
     
     
-      <category term="alphabet" scheme="http://amblizer.xyz/tags/alphabet/"/>
-    
       <category term="python" scheme="http://amblizer.xyz/tags/python/"/>
+    
+      <category term="alphabet" scheme="http://amblizer.xyz/tags/alphabet/"/>
     
   </entry>
   
@@ -390,11 +416,11 @@
       <category term="Algorithm" scheme="http://amblizer.xyz/categories/Algorithm/"/>
     
     
-      <category term="python" scheme="http://amblizer.xyz/tags/python/"/>
-    
       <category term="Fisher–Yates shuffle" scheme="http://amblizer.xyz/tags/Fisher%E2%80%93Yates-shuffle/"/>
     
       <category term="algorithm" scheme="http://amblizer.xyz/tags/algorithm/"/>
+    
+      <category term="python" scheme="http://amblizer.xyz/tags/python/"/>
     
   </entry>
   
